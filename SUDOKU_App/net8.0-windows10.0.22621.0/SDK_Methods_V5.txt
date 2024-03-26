@@ -1,0 +1,99 @@
+﻿LastDigit
+NakedSingle
+HiddenSingle
+GeneralLogic
+LockedCandidate
+LockedSet(2D)
+LockedSet(2D)Hidden
+LockedSet(3D)
+LockedSet(3D)Hidden
+LockedSet(4D)
+LockedSet(4D)Hidden
+LockedSet(5D)
+LockedSet(5D)Hidden
+LockedSet(6D)
+LockedSet(6D)Hidden
+LockedSet(7D)
+LockedSet(7D)Hidden
+XWing
+SwordFish
+JellyFish
+Squirmbag
+Whale
+Leviathan
+Finned XWing
+Finned SwordFish
+Finned JellyFish
+Finned Squirmbag
+Finned Whale
+Finned Leviathan
+Franken/MutantFish
+Finned Franken/Mutant Fish
+Skyscraper
+EmptyRectangleEx
+XY-Wing
+W-Wing
+RemotePair
+XChain
+XYChain
+SueDeCoq
+SueDeCoqEx1
+SueDeCoqEx2
+Franken_SDCEx3
+FinnedSueDeCoqEx1
+FinnedSueDeCoqEx2
+Finned_Franken_SDCEx3
+Color-Trap
+Color-Wrap
+MultiColor-Type1
+MultiColor-Type2
+XYZ-Wing
+WXYZ-Wing
+VWXYZ-Wing
+UVWXYZ-Wing
+XYZ-WingALS
+ALS-XZ
+ALS-XY-Wing
+eALS_Wing_2D
+eALS_Wing_3D
+eALS_Wing_4D
+eALS-ChainA
+ALS-DeathBlossom
+ALS-DeathBlossomEx
+eNW_DeathBlossom
+eNetwork_NiceLoop
+eNetwork_NiceLoopEx
+EndoFinned F/M Fish
+Finned EndoFinned F/M Fish
+Cannibalistic F/M Fish
+FinnedCannibalistic F/M Fish
+eKrakenFish
+eKrakenFinnedFish
+eNetwork_FC_Cells
+eNetwork_FC_House
+*MSlvrMaxLevel 10
+*MSlvrMaxAlgorithm 100
+*MSlvrMaxAllAlgorithm 400
+*MSlvrMaxTime 1200
+*RecommendLevel 20
+*StartTime 2024/03/18 0:00:00
+*NiceLoopMax 10
+*ALSSizeMax 5
+*ALSChainSizeMax 5
+*Cell True
+*AIC True
+*ALS True
+*ALSXZ False
+*AnLS False
+*eALS False
+*ForceLx ForceL2
+*ShowProofMultiPaths False
+*PreferSimpleLinks 1
+*Use_eALS 1
+*GeneralLogic_on False
+*GenLogMaxSize 3
+*GenLogMaxRank 1
+*Canceled 
+*ForceChain_on True
+*UCellLinkExt True
+*DebugSolCheckMode False

@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section style="padding-top: 1.5em;"><br>
+            <p>
+                Summarizes the basics of GNPX v5 development.
+            </p>
+
+            <a id="Locked"></a>
+            <h3 id="head_bg_LightBlue">&nbsp;&nbsp;Locked</h3>
+
+            <h4 id="head_bg_LightBlue">(0)&nbsp;SuDoKu Algorithm</h4>
+            <p>
+                <strong>"Locked"</strong> is an important concept in Sudoku analysis.<br>
+<<<<<<< HEAD
+                <img src="images/img102/image102_Locked_Algorithm.png" alt="Locked" width="60%"><br>
+=======
+                <img src="images/img102/imagw102_Locked_Algorithm.png" alt="Locked" width="60%"><br>
+>>>>>>> 07256ea1153693c875215d831f8da35597c55043
+
+                Locked is a restriction that arises from the candidate digits of cells,
+                the number of candidate digits, and the arrangement of cells.
+                Candidate digits are limited to positive or negative. There are many types of Locked.<br><br>
+                <img src="images/img102/image102_Locked_1.png" alt="Locked" width="60%"><br><br>
+
+                Depending on Locked, the surrounding candidate digits will be positive or negative.<br>
+                <img src="images/img102/image102_Locked_2.png" alt="Locked" width="25%"><br>
+            </p>
+
+
+            <h4 id="head_bg_LightBlue">(1)&nbsp;LockedSet</h4>
+            <p>
+                LockedSet is the simplest<strong>Locked</strong>.<a href="page33.html">( =>LockedSet )</a><br>
+                For a house, if there are <strong>n candidate digits in n cells</strong>,
+                the candidate digits for this cell are locked.<br><br>
+
+                In the case of n=1, one digit is determined by the analysis algorithm <strong>Single</strong>
+                (Last Digit, Naked Single, Hidden Single).<br><br>
+                <img src="images/img102/image102-a.png" alt="Locked" width="20%"><br><br>
+
+                The following figure shows the case of "two digits in two cells", which is a case of partial digits determination.
+                From the Sudoku solution of "determining the digitd in each cell on the board", this is one step in the solution. <br>
+                In the colored cells in these figures, the digits in the cell of interest is determined negatively.<br><br>
+                <img src="images/img102/image102-b1.png" alt="Locked" width="20%">
+                <img src="images/img102/image102-b2.png" alt="Locked" width="20%">
+                <img src="images/img102/image102-b3.png" alt="Locked" width="20%"><br>
+
+                The following figure is a LockedSet with "3 cells and 3 digits" and "4 cells and 4 digits".
+                (The figure on the right is a case where some candidate digits are missing)
+                The locked cells/digits is confirmed positively on the Sudoku board,
+                digits in gray background cells are negatively confirmed.<br><br>
+                <img src="images/img102/image102-b4.png" alt="Locked" width="20%">
+                <img src="images/img102/image102-b5.png" alt="Locked" width="20%"><br><br>
+
+                In the following figure, the cells and digits derived from the arrangement of digits are confirmed negatively.<br><br>
+                <img src="images/img102/image102-b6.png" alt="Locked" width="35%"><br><br>
+
+                LockedSet When there is no confirmed positive/negative point on the Sudoku board,
+                In locked cells, there will be multiple digits patterns.
+                The problem cannot be solved or is not a Sudoku problem (there is no unique solution). <br><br>
+                These characteristics of Locked are the same for the other types of Locked described below.
+            </p>
+
+
+            <h4 id="head_bg_LightBlue">(2)&nbsp;Fish / GeneralLogic</h4>
+            <p>
+                Fish is a Locked that occurs in two pairs of houses.
+                Focusing on digit X, select N houses that contain up to N numbers of digit X (N is the degree),
+                and call this a <strong>BaseSet</strong>.
+                Assume that the Houses of <strong>BaseSet</strong> do not overlap.<br>
+
+                Also, choose another set of N Houses to completely contain the<strong>BaseSet</strong>.
+                This is called a<strong>CoverSet</strong>.<br>
+
+                The common part of <strong>BaseSet and CoverSet</strong> selected in this way is Locked.
+                (Note: There is also an overlap type of Locked)br><br>
+                <img src="images/img102/image102-d1.png" alt="Fish" width="70%"><br><br><br>
+
+                As shown in the following figure,
+                elements included in CoverSet but not included in BaseSet (blue triangular elements in the figure)
+                are determined to be negative. <br>
+                If the blue triangle element is positive, there will be a shortage of positive elements in Baseset.<br><br>
+                <img src="images/img102/image102-d2.png" alt="Fish" width="70%"><br><br>
+
+                Fish can be extended as follows:
+                <ol>
+                    <li>Fish size is 2~7</li>
+                    <li>BaseSet/CoverSet house can be any combination of rows, columns, and blocks.<br>
+                        (Franken/mutant Fish)</li>
+                    <li>BaseSet/CoverSet house can be extended to digits in addition to rows, columns, and blocks.
+                        <a href="page60.html#GeneralLogic02">(GeneralLogic)</a>
+                    </li>
+                    <li>BaseSet/CoverSet can be extended to overlapping sets.(EndoFin/Cannibasatics Fish)</li>
+                    <li>Finned Fish</li>
+                </ol>
+                <img src="images/img102/image102-e1.png" alt="Fish" width="30%" ><br><br>
+                <img src="images/img102/image102-e2.png" alt="Fish" width="70%"><br><br>
+            
+                <strong>Sudoku algorithms (many?) can be reconfigured with
+                &nbsp;<a href="page60.html#GeneralLogic02">GeneralLogic</a>&nbsp;, an extension of Fish.
+                In other words, the Sudoku solving algorithm is based on Locked.</strong><br><br>
+            </p>
+
+
+
+            <h4 id="head_bg_LightBlue">(3)&nbsp;ALS-XZ Doubly_Linked</h4>
+            <p>
+                <a href="page103.html">ALS</a> is a state in which n cells contain (n+1) digits, and nothing is determined by this alone.<br>
+                When two ALSs are connected in a house different from the ALS house as shown in the following figure,
+                the common digits are called RCC(Restricted Common Candidate).
+
+                Consider a case where two ALSs are connected by two RCCs. <br>
+                The two x, y are included in each of the two ALS, and cannot be included in one at the same time.
+                At this time, the two ALSs become Locked together.<br><br>
+                <img src="images/img102/image102_ALSXZ.png" alt="Locked" width="30%"><br>
+            </p>
+
+
+
+            <h4 id="head_bg_LightBlue">(4)&nbsp;SDC(SueDeCoq)</h4>
+            <p>
+                <a href="page45.html">SDC(SueDeCoq)</a> is an extension of ALS-XZ (DoublyLink), in which two ALS are connected by AnLS. 
+                This too Locked exists inside the Sudoku board.<br>
+                The GNPX v5 SDC code is implemented using an algorithm using ALS/AnLS.<br>
+                (Supplement: “-n” in the conditional expression corresponds to the fact that
+                there are n ALS connected to Stem AnLS. This makes AnLS Locked.)<br><br>
+
+                It will be expanded further in future versions(v6).<br><br>
+
+                <img src="images/img102/image102_SDC1.png" alt="Locked" width="60%"><br><br>
+                <img src="images/img102/image102_SDC2.png" alt="Locked" width="60%"><br><br>
+            </p>
+        </section>
+    </article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

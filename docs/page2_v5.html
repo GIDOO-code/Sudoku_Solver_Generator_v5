@@ -1,0 +1,218 @@
+<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+-->
+<!doctype html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>GNPX4 Sudoku Algorithm</title>
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<link rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link rel="stylesheet" href="jq_treeview/screen.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+
+<body id="page">
+	<header id="head"> <strong><i">Sudoku Algorithm 5</i></strong>
+		<script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+	<div id="menuList">
+		<script type="text/javascript"> writeNaviAlgorithm(); </script>
+	</div>
+
+    <article id="main">
+		<section>
+			<h3 id="head_bg_Blue"><strong>Classification of Sudoku solving algorithm</strong></h3><br>
+									
+			<table class="table1" style="border-collapse:collapse; border: 1px solid #000099; max-width: 95%;" >
+				<tr>
+					<td class="table_itemName" style="width: 20%" >Classification</td>
+					<td class="table_itemName" style="width: 45%" >Algorithm</td>
+					<td class="table_itemName" style="width: 35" >Remarks, Family</td>
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp;Single</td>
+					<td class="table_line">
+						&nbsp; <a href="page31a.html"> Last Digit ***</a> <br>
+						&nbsp;<a href="page31b.html"> Naked Single ***</a> <br>
+						&nbsp;<a href="page31c.html"> Hidden Single ***</a></td>
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp; LockedCandidate</td>
+					<td class="table_line">&nbsp;<a href="page32.html"> LockedCandidate ***</a> </td>
+					<td class="table_line"> </td>
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp; LockedSet</td>
+					<td class="table_line">&nbsp; <a href="page33.html">LockedSet ***</a> </td>
+					<td class="table_line"></td>
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp; Fish </td>
+					<td class="table_line">
+						&nbsp; <a href="page34.html">Fish (2D-7D) ***</a> <br>
+						&nbsp; <a href="page35.html">Finned Fish ***</a> <br>
+						&nbsp; <a href="page36.html">Franken/Mutant Fish +</a> <br>
+						&nbsp; <a href="page36.html">Finned F/M Fish +</a> <br>
+						&nbsp; <a href="page37.html">(Finned)Endo Fish</a><br>
+						&nbsp; <a href="page37.html">(Finned)Canibalism</a> <br>
+						&nbsp; <a href="page38.html">Kraken(Finned)Fish +</a>
+					</td>
+					<td class="table_line">	<a href="page106.html">&nbsp;<font color=#383> Fish Family</font></a></tr>
+				<tr>
+					<td class="table_line">&nbsp; Link<br>&nbsp;(Link-Chain)</td>
+					<td class="table_line">
+						&nbsp; <a href="page40.html">SkyScraper</a> <br>
+						&nbsp; <a href="page41.html">EmptyRectangle</a> <br>
+						&nbsp; <a href="page48.html">X-Chain **</a> <br>
+						&nbsp; <a href="page49.html">XY-Chain **</a> <br>
+						&nbsp; <a href="page46.html">(Multi)Coloring</a> <br>
+						&nbsp; <a href="page42.html">XY-Wing</a> <br>
+						&nbsp; <a href="page43.html">W-Wing</a> <br>
+						&nbsp; <a href="page47.html">RemotePair</a>
+					</td>
+					<td class="table_line"></td>
+				</tr>
+
+				<tr>
+					<td class="table_line">&nbsp; SueDeCoq</td>
+					<td class="table_line"> &nbsp; <a href="page45.html">SueDeCoq **</a><br>
+						&nbsp; <a href="page45_v5.html">SueDeCoqEx *** +++</a> <br>
+						&nbsp; <a href="page45_v5.html#Franken_SueDeCoqEx">Franken SueDeCoqEx *</a>
+					</td>
+					<td class="table_line">
+						<a href="page106.html">&nbsp;<font color=#383>SueDeCoq Family</font></a><br>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="table_line">&nbsp; XYZ-Wing</td>
+					<td class="table_line">
+						&nbsp; <a href="page44.html">XYZ-Wing</a> <br>
+						&nbsp; <a href="page44.html#XYZWingALS">XYZ-Wing(ALS)</a> <br>
+						&nbsp; <a href="page53.html">Death Blossom</a> <br>
+					</td>
+					<td class="table_line"><a href="page53a.html">
+						<br><br>&nbsp;<font color=#383>ALS Death Blossom</font></a>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="table_line">&nbsp; ALS<br>&nbsp;(ALS-Chain)</td>
+					<td class="table_line">
+						&nbsp;<a href="page50.html">ALS XZ</a> <br>
+						&nbsp;<a href="page51.html">ALS XY-Wing</a> <br>
+						&nbsp;<a href="page52.html">ALS Chain **</a> <br>
+					</td>
+
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp; NiceLoop</td>
+					<td class="table_line">
+						&nbsp;<a href="page54.html">NiceLoop *</a> <br>
+						&nbsp;<a href="page55.html">Grouped NiceLoop ** +</a> </td>
+					<td class="table_line">
+						&nbsp;<a href="page105.html"><font color=#383> eNetwork</font> *</a> <br>
+						&nbsp;<a href="page107.html"><font color=#383> eNetwork解析アルゴリズム</font></a> </td>
+					</td>
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp;ForceChain</td>
+					<td class="table_line">
+						&nbsp;<a href="page56.html">ForceChain_Cell * +</a> <br>
+						&nbsp;<a href="page56.html#FC_House">ForceChain_House * +</a> <br>
+						&nbsp;<a href="page56.html#FC_Null"> (ForceChain_Contradiction) ** ++</a> </td>
+					<td class="table_line"></td>
+				</tr>
+				<tr>
+					<td class="table_line">&nbsp; GeneralLogic</td>
+					<td class="table_line">
+						&nbsp;<a href="page60.html">GeneralLogic * +</a> </td>
+					<td class="table_line">&nbsp;</td>
+				</tr>
+			</table>
+				***,**,*:Effective  ++,+:Fascinating<br><br>
+
+
+			<ul style="padding-left: 10px;">
+				<li>The first three "Single, LockedCandidate, LockedSet" are basic methods,
+					and are completed with these.</li><br>
+					
+				<li>Fish is a way to become a species that develops into various methods.
+					Fish contains important concepts for constructing Sudoku algorithm.
+					For example, "BaseSet and CoverSet", "Overlap", "Rank" etc.</li><br>
+
+				<li>As the name suggests, ALS is a state that becomes a "LockedSet" when some elements are removed. <br>
+					There are many types of Sudoku algorithms that use ALS.
+					Since there are many ALS on the board, it is useful as a solution.
+					It is difficult to find it manually, but it is easy to find it programmatically.</li><br>
+
+				<li>
+					Link is a state in which Fin is added to a group of Locked cells.
+					Links come in various forms, such as cell-to-cell, cell-to-ALS, ALS-ALS, and ALS-AIC.
+					Multiple links can be combined and connected to create various solution algorithms. <br>
+					GNPX_v5 has reformatted the Link expression to make it easier to extend. There will be further restructuring in v6.
+				</li><br>
+					
+				<li>SueDeCoq reinterpreted it as a combination logic of AnLS and ALS.
+						The conditions for the solution have been expanded. </li>
+
+				<li>There are two ways to connect links: radially connecting from the starting point to other cells/numbers,
+					and returning to the starting point to form a loop.</li><br>
+
+				<li>ForceChain is an algorithm that uses link concatenation (intercell links, AIC, ALS links).
+					A powerful method that uses spillover exploration and history management.<br>
+					Force-based algorithms are based on the following logic.
+					<ol>
+						<li>A set X has one element true and the rest false. Which element is true is undetermined.</li>
+						<li>A chain that starts with a true element determines the true/false of the elements led by the concatenation.</li>
+						<li>In a chain starting with false element, the value of the derived element is uncertain (it can be true or false).</li>
+						<li>For a chain that starts by assuming each element of set X to be true,
+							if the truth value of element A that all chains lead to is the same(all true or all false), the truth of element A is determined.</li>
+						<li>In a chain that starts by assuming that one element B of set X is true,
+							the starting element B is determined to be false if multiple roots lead to unequal truth values for element C(true and false).</li>
+					</ol>
+				</li><br>
+			</ul>
+						
+			<h3 id="head_bg_Blue" id="GeneralLogic" ><strong><a href="page60.html">GeneralLogic</a></strong></h3>
+			<p>All Sudoku solving algorithms shown in the table above can be expressed as "GeneralLogic".
+				This is a method to exclude logically inconvenient (unlikely) candidates
+				from the coverage of BaseSet and CoverSet.
+				It is relatively easy to reinterpret the results solved by the algorithm of the conventional method 
+				with BaseSet and CoverSet.<br>
+				However, in a naive way, "GeneralLogic" is not very efficient at solving Sudoku, so it is not a practical algorithm.<br>
+				Continue development? <strong>Resistance is futile?</strong>
+			</p>
+
+		</section>
+    </article>
+    
+	    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+        <p id="copyright"> Copyright &copy; 2014-  GNPX. All rights reserved.</p>
+    </footer>
+</body>
+</html>

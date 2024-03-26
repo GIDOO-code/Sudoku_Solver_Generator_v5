@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section><br><br>
+            <h3 id="head_bg_LightBlue">&nbsp;ALS</h3>
+            <p>ALS has become an important method among various Sudoku solving algorithms due to ALS links and RCC (characteristics).</p>
+
+
+            <h3 id="head_bg_LightBlue">(1)&nbsp;ALS</h3>
+            <p>
+                Locked Set is a state where there are "n candidate digits in n cells belonging to the same house".
+                Although it is not decided which cell is which digit, it is in a fixed state (Locked) as a subset.
+                ALS is in a "almost locked" state where there are "n+1 candidate digits" in "n cells" belonging to the same house.<br><br>
+                <img src="images/img103/image103_ALS_a1.png" width="50%" alt="Locked"><br>
+
+                If a digit is confirmed outside the ALS in some way and one digit is removed from the ALS, the ALS becomes Locked.
+                Although ALS alone cannot be used as a solution, it can be combined with other methods to create various analysis algorithms.
+                The minimum ALS is "1 cell 2 candidate digits".<br><br>
+                <img src="images/img103/image103_ALS_a2.png" width="50%" alt="Locked"><br><br>
+            </p>
+
+
+
+            <h3 id="head_bg_LightBlue">(2)&nbsp;A2LS, AnLS</h3>
+            <p>
+                ALS can be extended to "AnLS" which is a cell group of "n cells and n+m candidate digits" in its naive form.
+                As a natural extension, ALS can be extended to "AnLS",
+                which is a cell group consisting of "n cells and n+m candidate digits".
+                <br>
+                GNPX v5 uses ALS-XZ links with A2LS. <br>
+                It also shows how to use AnLS as a solving algorithm for SueDeCoq (in addition to AnLS, it also uses ALS and RCC).<br><br>
+                <img src="images/img103/image103_ALS_a3.png" width="50%" alt="AnLS">
+            </p>
+
+
+
+            <h3  id="head_bg_LightBlue">(3)&nbsp;RCC</h3>
+            <p>
+                The analysis algorithm involving two ALS(AnLS) takes advantage of the common digits limiting effect.
+                In the following figure, there are two ALSs, and when these satisfy the following conditions,
+                This digits is called RCC(Restricted Common Candidate).<br><br>
+                <strong>Condition: Two non-overlapping ALSs have a common number and are in the same house.</strong>
+                    (Orange dotted line frame, different from ALS house).<br><br>
+                &nbsp;<img src="images/img103/image103_ALS_b1.png" width="30%" alt="ALS RCC"><br>
+
+                Since the RCCs belong to the same house,
+                the RCC is positive for only one ALS, and the RCC is negative for the other ALS.
+                However, it has not been decided which ALS is positive.<br>
+
+                If some condition is added here and RCC is affirmed in one ALS ("RCC is in this ALS"), then
+                In the other ALS, the negative (“RCC is not in this ALS”) is confirmed.
+                For an ALS that is negative, there will be "n candidate digits in n cells", and this ALS will become a LockedSet.<br><br>
+
+                The following figure shows a case where there are two RCCs between two ALSs(doubly linked).
+                RCC is only in one ALS. In the case of doublylinked, the two RCCs are not biased towards one ALS,
+                There is one for each ALS.
+                However, we have not determined which RCC is in which ALS. <br>
+                A doublylinked ALS set behaves like a LockedSet as a unit. <br>
+                &nbsp;<img src="images/img103/image103_ALS_b2.png" width="40%" ><br><br>
+
+                Additionally, AnLS may use three or more RCCs.<br><br>
+            </p>
+
+        </section>
+    </article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

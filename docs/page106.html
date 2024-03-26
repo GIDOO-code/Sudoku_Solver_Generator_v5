@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section>
+            <br><br>
+            <h3 id="head_bg_Blue">&nbsp;Fish Family</h3>
+            <p>
+                Fish is Locked, which consists of a BaseSet and a CoverSet.<br>
+                CoverSet completely covers Baseset. Elements that destroy CoverSet are negatively determined.<br><br>
+
+                <ol>
+                    <li>
+                        Fish(Basic) : (BaseSet,CoverSet) = (2 rows house, 2 columns house) Fish.<br>
+                        (The order of row house and column house is not essential.)
+                    </li>
+                    <li>Size: Fish sizes range from 2 to 7. Each one has a name. Fish of size 5-7 has a dual Fish (size 4-2).</li>
+                    <li>
+                        Franken/Mutanthouse(F/M) FIsh: Even if the block house is added to the row/column house, Fish is established.
+                        BaseSet and CoverSet can be selected by any combination of rows/columns/blocks house.
+                    </li><br>
+
+                    <u>For Fish 1 to 3, there is no overlap in BaseSet and CoverSet.</u><br><br>
+
+                    <li>
+                        Endo Fish: Fish with overlap in BaseSet.
+                        The overlapped part is Endo Fin and is confirmed positively.
+                    </li>
+                    <li>Cannibalistic Fish: Fish with overlap in CoverSet. Overlapping parts are determined negatively.</li>
+                    <li>Finned Fish: A Fish whose BaseSet is not partially covered by the CoverSet.</li><br>
+                
+                    <u>Fish 1 to 6 are configured by BaseSet and CoverSet by row/column/block house.</u>
+                    
+                    <hr width="60%" align="left"><br>
+                    <li>(Finned）Kraken Fish : Fish that applies eNetwork to links that break Locked.</li>
+                    <li>LockedSet/ALS: Fish composed of house and digits. Finned LockedSet is ALS. A form of Fish expansion. </li>
+                    <li>
+                        General Logic: Row/Column/Block House plus cell digits 1-9 added to the element Fish. <br>
+                        Many Sudoku analysis algorithms can be reconfigured using General Logic.
+                    </li><br>
+                    <u>LockedSet is configured by digits and row/column/block house.</u><br><br>
+                </ol>
+
+                <img src="images/img106/image106_Fish_Family.png" width="80%" alt="Fish Family">
+
+
+            </p>
+        </section><br><br>
+    </article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

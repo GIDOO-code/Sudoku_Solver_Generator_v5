@@ -1,0 +1,225 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku UFish FishMan</title>
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+
+<!-- ======================================================================== -->
+<article id="main">
+	<section>
+
+        <h4 id="head_bg_LightBlue">UFish class</h4>
+
+        <pre class="line-numbers" class="prismOp" >
+<code class="language-csharp">public class UFish{
+    public int      ID;
+    public int      no;
+    public int      sz;
+    public Bit81    BaseB81=null;
+    public Bit81    EndoFin=null;
+    public int      HouseB=0;
+
+    public UFish    BaseSet=null;
+    public int      HouseC=0;
+    public Bit81    CoverB81=null;
+    public Bit81    FinB81=null;
+    public Bit81    CannFin=null;
+
+    public UFish( int no, int sz, int HouseB, Bit81 BaseB81, Bit81 EndoFin ){
+        this.no=no;
+        this.sz=sz;
+        this.HouseB =HouseB;
+        this.BaseB81=BaseB81;
+        this.EndoFin=EndoFin;
+    }
+        
+    public UFish( UFish BaseSet, int HouseC, Bit81 CoverB81, Bit81 FinB81, Bit81 CannFin ){
+        this.BaseSet =BaseSet;
+        this.HouseC  =HouseC;
+        this.CoverB81=CoverB81;
+        this.FinB81  =FinB81;
+        this.CannFin =CannFin;
+    }
+    public string ToString( string ttl ){
+        string st = ttl + HouseB.HouseToString();
+        return st;
+    }
+}</small></code></pre><br>
+
+		<h4 id="head_bg_LightBlue">Fish Manager class(FishMan)</h4>
+        <pre class="line-numbers" class="prismOp" >
+<code class="language-csharp">public class UFish{<small>public class FishMan{
+    private List&lt;UCell&gt;   pBDL;
+    private Bit81[]       pHouseCells;
+    private Bit81[]       pConnectedCells;
+
+    private int           sz;
+    private int           no;
+    private List&lt;Bit81&gt;   HBLst=new List&lt;Bit81&gt;();
+    private bool          extFlag;
+
+    public FishMan( AnalyzerBaseV2 AnB, int FMSize, int no, int sz, bool extFlag=false ){
+        this.pBDL = AnB.pBDL;
+        this.pHouseCells = AnalyzerBaseV2.HouseCells;
+        this.pConnectedCells = AnalyzerBaseV2.ConnectedCells;
+        this.extFlag=extFlag;
+        this.no=no; this.sz=sz;
+        int noB=(1&lt;&lt;no);
+
+        Bit81 Q, BPnoB=new Bit81(pBDL,noB);
+        for( int tfx=0; tfx&lt;FMSize; tfx++ ){
+            Q = pHouseCells[tfx]&BPnoB;
+            if( !Q.IsZero() && !HBLst.Contains(Q) ){ Q.ID=tfx; HBLst.Add(Q); }
+        }
+        if( HBLst.Count&lt;sz*2 ){ HBLst=null; return; }
+    }
+
+    public IEnumerable&lt;UFish&gt; IEGet_BaseSet( int BaseSel, bool EndoFlg=false ){
+        if(HBLst==null)  yield break;
+
+        GeneralLogicGen.ChkBas1=0;
+        GeneralLogicGen.ChkBas2=0;
+        Bit81 Q;
+        Combination cmbBas=new Combination(HBLst.Count,sz);
+        int nxt=int.MaxValue;
+        while( cmbBas.Successor(nxt) ){
+                                int chk1=++GeneralLogicGen.ChkBas1;
+            int   usedLK=0;
+            Bit81 HB81=new Bit81();
+            Bit81 OHB81=new Bit81();
+            for( int k=0; k&lt;sz; k++ ){
+                nxt=k;
+                int nx=cmbBas.Cmb[k];
+                if( ((1&lt;&lt;HBLst[nx].ID)&BaseSel)==0 )  goto nxtCmb;
+                if( !(Q=HB81&HBLst[nx]).IsZero() ){ //overlap
+                    if(!EndoFlg)   goto nxtCmb;
+                    OHB81 |= Q;
+                }
+                usedLK |= 1&lt;&lt;HBLst[nx].ID;  //house Number
+                HB81   |= HBLst[nx];        //Bit81
+            }
+            if( extFlag && !IsLinked9(HB81) )  continue;
+                                int chk2=++GeneralLogicGen.ChkBas2;
+
+            UFish UF = new UFish(no,sz,usedLK,HB81,OHB81);
+            //if(sz&gt;=3 && BaseSel==0x7FFFFFF) Debug_PattenPrint(UF);
+            yield return UF;
+
+            nxtCmb:
+            continue;
+        }
+        yield break;
+    }
+    public bool IsLinked9( Bit81 HB81 ){
+        Bit81 Colored=new Bit81(), Processed=new Bit81();
+        int rc0 = HB81.FindFirstrc();
+        Colored.BPSet(rc0);
+        while(true){
+            Bit81 T = Colored-Processed;
+            if( (rc0=T.FindFirstrc())&lt;0 ) break;
+
+            Processed.BPSet(rc0);
+            Colored |= HB81&pConnectedCells[rc0];
+            if( HB81.IsHit(rc0) ) Colored.BPSet(rc0);
+        }
+        return (HB81-Colored).IsZero();
+    }
+    private void Debug_PattenPrint( UFish UF ){
+        WriteLine("no="+no+ " sz="+sz +"  BaseSet: " + UF.HouseB.HouseToString() );
+        Bit81 BPnoB=new Bit81(pBDL,1&lt;&lt;no);
+        string noST=" "+no.ToString();
+        for( int r=0; r&lt;9; r++ ){
+            string st="";
+            BPnoB.GetRowList(r).ForEach(p=&gt;st+=(p==0? " .": noST));
+            st+=" ";
+            UF.BaseB81.GetRowList(r).ForEach(p=&gt;st+=(p==0? " .": " B"));
+            st+=" ";
+            (BPnoB-UF.BaseB81).GetRowList(r).ForEach(p=&gt;st+=(p==0? " .": " X"));
+            WriteLine(st);
+        }
+    }
+
+    public IEnumerable&lt;UFish&gt; IEGet_CoverSet( UFish BSet, int CoverSel, bool Finned, bool CannFlg=false ){
+        if(HBLst==null)  yield break;
+
+        List&lt;Bit81&gt; HCLst=new List&lt;Bit81&gt;();
+        foreach( var P in HBLst.Where(q=&gt;(BSet.HouseB&(1&lt;&lt;q.ID))==0) ){
+            if( ((1&lt;&lt;P.ID)&CoverSel)==0 )  continue;
+            if( BSet.BaseB81.IsHit(P) )  HCLst.Add(P);
+        }
+
+        Bit81 Q;
+        Combination cmbCov=new Combination(HCLst.Count,sz);
+        int nxt=int.MaxValue;
+        while( cmbCov.Successor(nxt) ){
+            int chk1=++GeneralLogicGen.ChkCov1;
+
+            int   usedLK=0;
+            Bit81 HC81=new Bit81();
+            Bit81 OHC81=new Bit81();
+            for( int k=0; k&lt;sz; k++ ){
+                nxt=k;
+                int nx=cmbCov.Cmb[k];
+                if( !(Q=HC81&HCLst[nx]).IsZero() ){ //overlap
+                    if(!CannFlg)  goto nxtCmb;
+                    OHC81 |= Q;
+                }
+                usedLK |= 1&lt;&lt;HCLst[nx].ID;  //house Number
+                HC81   |= HCLst[nx];        //Bit81
+            }
+
+            Bit81 FinB81=BSet.BaseB81-HC81;
+            if( Finned!=(FinB81.Count&gt;0) ) continue;
+            UFish UF = new UFish(BSet,usedLK,HC81,FinB81,OHC81);
+            //if(sz&gt;=3 && CoverSel==0x7FFFFFF)  WriteLine("  CoverSet: " + UF.HouseC.HouseToString() );
+            yield return UF;
+            
+            nxtCmb:
+            continue;
+        }
+        yield break;
+    }
+}</small></code></pre>
+		
+	</section>
+</article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+	<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

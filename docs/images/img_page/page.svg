@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="page.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="2.587745"
+     inkscape:cx="230.12314"
+     inkscape:cy="225.67911"
+     inkscape:window-width="2186"
+     inkscape:window-height="1535"
+     inkscape:window-x="1203"
+     inkscape:window-y="282"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5314">
+      <stop
+         style="stop-color:#744fff;stop-opacity:1;"
+         offset="0"
+         id="stop5310" />
+      <stop
+         style="stop-color:#d7ceff;stop-opacity:0;"
+         offset="1"
+         id="stop5312" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5314"
+       id="linearGradient5316"
+       x1="15.905544"
+       y1="44.285542"
+       x2="104.10905"
+       y2="44.785542"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5314"
+       id="linearGradient6774"
+       gradientUnits="userSpaceOnUse"
+       x1="15.905544"
+       y1="44.285542"
+       x2="104.10905"
+       y2="44.785542"
+       gradientTransform="translate(0,42.800389)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.8;fill:#6a4fff;fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linejoin:bevel;stroke-miterlimit:0.5;paint-order:fill markers stroke"
+       id="rect234"
+       width="60.730274"
+       height="14.1704"
+       x="15.037973"
+       y="16.194742"
+       inkscape:export-filename="squareSimple.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.8;fill:url(#linearGradient5316);fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linejoin:bevel;stroke-miterlimit:0.5;paint-order:fill markers stroke"
+       id="rect3338"
+       width="60.730274"
+       height="14.1704"
+       x="14.748781"
+       y="37.884129"
+       inkscape:export-filename="squareGrad.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.8;fill:#6a4fff;fill-opacity:1;stroke:#ffffff;stroke-width:0.5;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;paint-order:stroke fill markers"
+       id="rect6770"
+       width="60.730274"
+       height="14.1704"
+       x="15.037973"
+       y="58.995132"
+       ry="2.0564182"
+       rx="1.7381607"
+       inkscape:export-filename="squareSimpleR.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="opacity:0.8;fill:url(#linearGradient6774);fill-opacity:1;stroke:#ffffff;stroke-width:0.499999;stroke-linejoin:bevel;stroke-miterlimit:0.5;paint-order:fill markers stroke"
+       id="rect6772"
+       width="60.730274"
+       height="14.1704"
+       x="14.748781"
+       y="80.684517"
+       ry="2.0739641"
+       rx="2.5561187"
+       inkscape:export-filename="squareGradR.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

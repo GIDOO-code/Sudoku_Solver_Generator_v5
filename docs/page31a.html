@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku  Last Digit</title>
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+
+    <!-- -------------------------------------------------------------------------- -->
+<article id="main">
+	<section>
+		<h3 id="head_bg_Blue">Last Digit</h2><br>
+		<img class="imgL" src="images/img31/img31a.png" alt="Last Digit" width=30% >
+		<p>
+            "Last Digit" is a rule of numerical arrangement of Sudoku.<br>
+		    In a house with one indeterminate cell, that cell is determined to the remaining digits.<br><br>
+		    For this example, set X=4 Y=6 Z=8.</p>
+            <p class="newLine"/><br>
+
+		<h4 id="head_bg_LightBlue" >Example</h4>
+		
+		<img class="imgL" src="images/img31/img31a_10.png" alt="Last Digit" width=30% >
+		
+		<p>Cells with dark background are problem digits, light cells are solved cells, small digits are candidate digits<br><br>
+            The r3c3 is determined to be digit 6.</p>
+        <p class="newLine">.93...7..5.4.7..1.27.3..5.8..2..78...4..5.6.....4...914.853.9...3...4.85..5..9.3.</p>
+        <p>If simple program, it will be the following code.</p>
+
+
+		<h3 id="head_bg_LightBlue">Last Digit C# program(simple program)</h3>
+		<pre class="line-numbers" class="prismOp">
+<code class="language-csharp"><small>partial class GNPZ_Analyzer{
+    public bool gSDK_LastDigitOld( ){
+        int rc=0;
+        UCell P0=null;
+        
+        for( int tfx=0; tfx&lt;27; tfx++ ){
+            int cc=0;
+            for( int nx=0; nx&lt;9; nx++ ){
+                UCell P = GetCell_House( pBDL, tfx, nx, ref rc );
+                if( P.No==0 ){
+                    if( ++cc&gt;=2 ) goto nextTry;
+                    P0 = P;
+                }
+            }
+            if( cc==1 ){
+                SolCode=1;
+                P0.FixedNo = P0.FreeB.BitToNum()+1;
+                if( !MltSolOn )  goto LFond;
+            }
+        nextTry:
+            continue;
+        }
+
+    LFond:
+        .
+        . (Solution report code)
+        .
+		return true;
+    }
+    private UCell GetCell_House( List&lt;UCell&gt; pBDL, int tfx, int nx, ref int rc ){ //nx=0...8
+        int r=0, c=0, fx=tfx%9;
+        switch(tfx/9){
+            case 0: r=fx; c=nx; break;  //row
+            case 1: r=nx; c=fx; break;  //column
+            case 2: r=(fx/3)*3+nx/3; c=(fx%3)*3+nx%3; break; //block
+        }
+        return pBDL[r*9+c];
+    }
+}</small></code></pre>
+		
+    <p>
+        Next is the Linq version. The essential part of the analysis algorithm is one line.<br>
+        if( pBDL.IEGetCellInHouse(tfx,0x1FF).Count()==1 ) <br>
+        IEGetCellInHouse is defined as a static class with other similar functions
+        as an extension function of List <UCell> type.<br><br>
+    </p>
+
+
+    <h4 id="head_bg_LightBlue">Last Digit C# program(Linq version)</h4>
+    <pre class="line-numbers" class="prismOp">
+<code class="language-csharp"><small>public class SimpleSingleGen: AnalyzerBaseV2{
+    public bool LastDigit( ){
+        bool  SolFond=false;
+        for( int tfx=0; tfx<27; tfx++ ){
+            if( pBDL.IEGetCellInHouse(tfx,0x1FF).Count()==1 ){
+                SolFond=true;
+                var P=pBDL.IEGetCellInHouse(tfx,0x1FF).First();
+                P.FixedNo=P.FreeB.BitToNum()+1;
+                if( !MltSolOn )  goto LFond;
+            }
+        }
+
+        LFond:
+        if(SolFond){
+            .
+            . (Solution report code)
+            .
+			return true;
+        }
+        return false;
+    }
+}</small></code></pre>
+
+
+        <h4 id="head_bg_LightBlue">IEGet function</p>
+		<pre class="line-numbers" class="prismOp">
+<code class="language-csharp"><medium>static public class StaticSA{ 
+    static public IEnumerable&lt;UCell&gt; IEGetCellInHouse(this List&lt;UCell&gt; pBDL, int tfx, int FreeB=0x1FF){
+        int r=0, c=0, tp=tfx/9, fx=tfx%9;
+        for( int nx=0; nx&lt;9; nx++ ){
+            switch(tp){
+                case 0: r=fx; c=nx; break;//row
+                case 1: r=nx; c=fx; break;//column
+                case 2: r=(fx/3)*3+nx/3; c=(fx%3)*3+nx%3; break;//block
+            }
+            UCell P=pBDL[r*9+c];
+            P.nx=nx;
+            if( (P.FreeB&FreeB)&gt;0 ) yield return P;
+        }
+    }
+}</medium></code></pre>
+	</section>
+</article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+	<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

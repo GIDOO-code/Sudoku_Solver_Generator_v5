@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="306.19534mm"
+   height="166.98535mm"
+   viewBox="0 0 306.19534 166.98535"
+   version="1.1"
+   id="svg17372"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="image106.svg"
+   inkscape:export-filename="image105_NodeLink.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview17374"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.7980859"
+     inkscape:cx="398.4793"
+     inkscape:cy="363.99819"
+     inkscape:window-width="2441"
+     inkscape:window-height="1765"
+     inkscape:window-x="1218"
+     inkscape:window-y="124"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid580"
+       originx="-10.154881"
+       originy="-20.344381"
+       spacingy="1"
+       spacingx="1"
+       units="mm"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs17369">
+    <marker
+       style="overflow:visible"
+       id="marker48"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path48" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker47"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path47" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker46"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path46" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker45"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path45" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker44"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path44" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker43"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path43" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker42"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path42" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="DartArrow"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Dart arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         transform="scale(-0.5)"
+         id="path6" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect34"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-10.154881,-20.344381)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2115px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.298398;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="160.36963"
+       y="23.214767"
+       id="text1"
+       transform="scale(0.79601147,1.2562633)"
+       inkscape:export-filename="image106_FishFamily.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.2115px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.298398;stroke-dasharray:none"
+         x="160.36963"
+         y="23.214767">Fish Family</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.333412;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect20"
+       width="40.245285"
+       height="13.656873"
+       x="16.049795"
+       y="37.589027"
+       ry="2.7210479"
+       rx="3.1133304" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="22.039145"
+       y="45.962341"
+       id="text1-3"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan1-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="22.039145"
+         y="45.962341">Fish (basic)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="55.328888"
+       y="119.49097"
+       id="text17"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="55.328888"
+         y="119.49097">Franken/Mutant Fish</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.436707;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect21"
+       width="69.571434"
+       height="13.553577"
+       x="49.945297"
+       y="112.53861"
+       ry="2.7004669"
+       rx="3.0926263" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="147.00453"
+       y="79.444962"
+       id="text18"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="147.00453"
+         y="79.444962">Finned Fish</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.347498;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect22"
+       width="43.762733"
+       height="13.642787"
+       x="138.92476"
+       y="71.734215"
+       ry="2.7182415"
+       rx="3.0893214" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="72.054932"
+       y="145.11131"
+       id="text19"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="72.054932"
+         y="145.11131">Endo Finned Fish</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.40565;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect25"
+       width="59.890774"
+       height="13.584635"
+       x="65.52739"
+       y="138.71527"
+       ry="2.7066548"
+       rx="2.5356243" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="72.272095"
+       y="169.3987"
+       id="text20"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="72.272095"
+         y="169.3987">Cannibalism</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.352063;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect26"
+       width="44.935345"
+       height="13.638221"
+       x="65.500572"
+       y="163.40921"
+       ry="2.7173316"
+       rx="3.3218074" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="40.177521"
+       y="65.618019"
+       id="text3"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="40.177521"
+         y="65.618019">2D : X-Wing</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="40.177521"
+         y="71.968025"
+         id="tspan7">3D : SwordFish</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="40.177521"
+         y="78.318024"
+         id="tspan8">4D : JellyFish</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="40.177521"
+         y="84.66803"
+         id="tspan9">5D : Squirmbag</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="40.177521"
+         y="91.018036"
+         id="tspan10">6D : Whale</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="40.177521"
+         y="97.368042"
+         id="tspan13">7D : Leviathan </tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.45533;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect27"
+       width="57.34808"
+       height="44.150063"
+       x="32.586998"
+       y="58.540642"
+       ry="4.085537"
+       rx="3.9536808" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.499999;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#DartArrow)"
+       d="m 32.960976,53.41444 c 0,9.172178 0,18.344353 0,27.516529 0,0 8.681686,0 8.681686,0"
+       id="path33"
+       inkscape:path-effect="#path-effect34"
+       inkscape:original-d="m 32.960976,53.41444 c 0,9.172178 0,27.516529 0,27.516529 0,0 8.681686,0 8.681686,0"
+       transform="matrix(0.7368879,0,0,1.0105392,-0.71702624,-2.7745934)" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.436848;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker43)"
+       d="m 39.610991,102.41441 v 16.31216 h 7.620625"
+       id="path34" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.422209;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker45)"
+       d="m 56.100451,125.92673 v 18.72757 h 6.59521"
+       id="path35" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.427343;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker46)"
+       d="m 56.011573,144.33795 -0.212393,25.31954 6.902818,0.14893"
+       id="path36" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="147.00453"
+       y="118.70046"
+       id="text36"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan36"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="147.00453"
+         y="118.70046">Finned F/M Fish</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.399734;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect36"
+       width="58.130924"
+       height="13.590551"
+       x="138.95088"
+       y="111.78438"
+       ry="2.7078338"
+       rx="4.1036081" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="147.00453"
+       y="144.82268"
+       id="text37"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan37"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="147.00453"
+         y="144.82268">Finned F/M Endo Fish</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.455323;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect37"
+       width="75.733002"
+       height="13.534962"
+       x="138.97867"
+       y="138.44582"
+       ry="4.1682343"
+       rx="4.1689982" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none"
+       x="147.00453"
+       y="169.21304"
+       id="text38"
+       transform="scale(0.98079785,1.0195781)"><tspan
+         sodipodi:role="line"
+         id="tspan38"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.206176;stroke-dasharray:none"
+         x="147.00453"
+         y="169.21304">Finned F/M Cannibalistic Fish</tspan></text>
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.50535;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect38"
+       width="93.634933"
+       height="13.484936"
+       x="139.00368"
+       y="163.33871"
+       ry="4.1582704"
+       rx="4.255569" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.488888;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker42)"
+       d="M 90.314355,78.55684 H 135.6752"
+       id="path38" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.508104;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker44)"
+       d="m 119.90535,119.70375 16.05681,-0.25902"
+       id="path39" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.450495;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker47)"
+       d="m 125.69095,145.46022 h 10.4737"
+       id="path40" />
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.475848;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker48)"
+       d="m 110.49982,170.64002 h 25.44483"
+       id="path41" />
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#00b100;stroke-width:0.492173;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect48"
+       width="233.07713"
+       height="154.41624"
+       x="10.400968"
+       y="32.667408"
+       rx="4.0393033"
+       ry="4.1684456" />
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#009900;stroke-width:0.499999;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect49"
+       width="1.4566832"
+       height="0.41619518"
+       x="244.51466"
+       y="32.255127"
+       rx="4.1689982"
+       ry="0.41619518" />
+    <rect
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#009900;stroke-width:0.480668;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       id="rect50"
+       width="49.754654"
+       height="17.291431"
+       x="266.35526"
+       y="69.286827"
+       rx="2.5038502"
+       ry="3.5416183" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:0.9;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:0.8;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.499999;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1"
+       x="270.92029"
+       y="79.889359"
+       id="text50"><tspan
+         sodipodi:role="line"
+         id="tspan50"
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="270.92029"
+         y="79.889359">General Logic</tspan></text>
+    <path
+       style="opacity:0.8;fill:none;fill-opacity:1;stroke:#0000e6;stroke-width:0.513373;stroke-linejoin:round;stroke-miterlimit:0.5;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker44)"
+       d="m 243.8792,78.682424 18.57664,-0.228551"
+       id="path51" />
+  </g>
+</svg>

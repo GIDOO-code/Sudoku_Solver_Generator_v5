@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section><br>
+            <p>
+                This section provides an overview of GNPX v5 link notation, classes, algorithms, etc.
+                Accurate understanding requires reading the GNPX code.<br>
+                Please note that i are still in the process of sorting things out and the consistency is not yet complete.
+            </p>
+
+            <h3 id="head_bg_LightBlue">&nbsp;eNetwork</h3>
+            <p>
+                <ul>
+                    <li> The mechanism for connecting links is defined as "eNetwork(eNW)".<br>
+                    <li> Link: Used as a name to summarize inter-cell links, intra-cell links, ALS links, AIC links, etc.</li>
+                </ul>
+            </p>
+
+
+            <h4 id="head_bg_LightBlue">&nbsp;(1) ULogical_Node</h4>
+            <p>
+                This is a basic element class in eNetwork.
+                It has the attributes of "position, digit, and status (affirmative or negative)" of cells and cell groups.
+            </p>
+
+
+
+            <h4 id="head_bg_LightBlue">&nbsp;(2) eNetwork_Node</h4>
+            <p>
+                <ul>
+                    <li>It has a cell, a group of cells, and an attribute value.</li>
+                    <li>A state attribute value can be positive(+) or negative(-).
+                        (Until Ver4.0, it was written as true and false, but this will change.)</li>
+                    <li>Multiple cells such as ALS and AIC can be treated as one set.</li>
+                    <li>Nodes have information about the links they connect.
+                        The state attribute of a link end node can be positive, negative, or both. <br>
+                        If the state attribute of a node is both affirmative and negative,
+                        it is a contradiction and the underlying proposition is false.</li>
+                </ul>
+            </p>
+
+
+
+            <h4 id="head_bg_LightBlue">&nbsp;(3) eNetwork_Link</h4>
+            <p>
+                <ul>
+                    <li>The eNetwork_Link class has a origin node, destination node,
+                        next connection node, and common attributes for assembling a network.<br><br>
+                        <img src="images/img105/image105_NodeLink.png" width="40%" alt="eNetwork Node">
+                    </li><br>
+                    <li>Each linked derived class has an underlying Locked pattern.
+                        It is made by adding elements to this to make it Almost. <br>
+                        eNW_Link_InterCells, eNW_Link_IntraCell, eNW_Link_ALS, eNW_Link_ALSM,<br>
+                        eNW_Link_refALS, eNW_Link_AIC, eNW_Link_AICM, eNW_Link_ALSXZ, ...
+                        (It will be expanded in the future. Probably.)<br>
+                        <img src="images/img105/image105_Class_Link.png" width="80%" alt="eNetwork Link">
+                    </li>
+
+                </ul>
+            </p>
+
+
+            <h4 id="head_bg_LightBlue">&nbsp;(4) Implementation of nodes and links in GNPX v5</h4>
+            <p>
+                During the analysis of a Sudoku position, nodes dynamically manage attribute values<br>
+                When a link is connected to a confirmed node,
+                the state attribute value of the terminal node is confirmed (+/-) and the node is registered in the list (peNetwork_NodeList). <br>
+
+                When searching a network, if the state attribute value (+/-) of a node is determined by multiple routes,
+                the search beyond that point can be omitted if the attribute values are the same.
+                If they do not match, it is a contradiction and the premised proposition is false.<br>
+
+                In order to handle multiple routes,
+                we adopted a method in which the nodes at both ends of the link do not have state attributes,
+                and the state attributes of the network nodes are managed separately.
+                (This is how to implement in GNPX. There are other ways.)
+            </p>
+
+            <h4 id="head_bg_LightBlue">(5) network search</h4>
+            <p>
+                Once the state attributes of the starting node are determined,
+                we can extend the links that connect to it, and then extend them further... to create a network.
+                This network may form Locked. In other words, it is a Sudoku analysis algorithm.<br>
+
+                There are two types of network exploration: radial and loop.<br>
+                
+                <ol style="padding-left:40px">Radial network search algorithm:<br>
+                    <li>For all links connecting to the starting node,
+                        find the state attributes of the terminal node.</li>
+                    <li>If the node is not registered, register it in the node and state attributes.
+                        Also, register it in the next search queue.</li>
+                    <li>If the node is registered and the state attributes match, do nothing.</li>
+                    <li>If the node is already registered and the state attributes do not match,
+                        the process ends with the discovery of an "inconsistency".</li>
+                    <li>If the target node is reached or if the Queue is empty, exit.<br>
+                        If not, take the node from the Queue and repeat from 1.
+                    </li>
+                </ol>
+
+                Loop type network search changes the processing at the start of the search from "all links" to "1 link".
+                Leave space for the links that form the loop.
+                After the second link, all links connecting to the node are searched.<br><br>
+
+                <img src="images/img105/image105_radialSearch.png" width="30%" alt="Radial Search">
+                <img src="images/img105/image105_loopSearch.png" width="30%" alt="Loop Search">
+            </p>
+
+
+
+        </section><br><br>
+    </article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

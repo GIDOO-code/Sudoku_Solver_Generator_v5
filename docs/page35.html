@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku Finned Fish</title>
+
+	<!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+	
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+		<script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+	<section id="menuList">
+		<script type="text/javascript"> writeNaviAlgorithm(); </script>
+	</section>
+
+
+<!-- -------------------------------------------------------------------------- -->
+<article id="main">
+	<section>
+		<h3 id="head_bg_Blue">Finned Fish</h2>
+		<p>
+			he left figure is X-Wing(2D-Fish).
+			From the Locked relationship between BaseSet and CoverSet,
+			circled digits X can be excluded from candidate digits. Large circle represent block.
+			Even if the digit X with square is additionally present as shown on the right,
+			the circled digit X can be excluded from the candidate digit.
+			And the column c1 squared digit X is also excluded.
+			Square boxed digit X is called Fish's Fin.
+			The cell arrangement on the right is Finned Fish.
+			In Finned Fish, since the complementary relationship is not established,
+			there are cases where Finned Fish of 5th order or more is necessary.<br>
+			<img src="images/img35/img35a1.png" alt="Fish and Finned Fish" width="25%">
+			<img src="images/img35/img35a2.png" alt="Fish and Finned Fish" width="25%">
+		</p>
+		<p style="clear: both" ></p><br>
+
+		<p>
+			This is Finned Fish. From the left is Finned X-Wing, Finned Sword Fish, Finned Jerry Fish.
+			Yellow cell is Fish part, green cell is Fin.</p>
+		<img src="images/img35/img35b.png" alt="Finned Fish" width="25%">
+		<img src="images/img35/img35c.png" alt="Finned Fish" width="25%">
+		<img src="images/img35/img35d.png" alt="Finned Fish" width="25%">
+		<p style="clear: both" >
+		<small>
+			81........27.3149.......718.9.34.....7.....6.....96.2.182.......4512.98........41<br>
+			19.3.......2...14.8..641...3.9..8...75.....28...7..9.5...164..2.16...7.......7.81<br>
+			..9..154..5..9.....6.5..92.8..3..1.41..4.6..95.4..8..2.42..9.6.....6..1..187..2..</small><br></p>
+
+		<h4 id="head_bg_LightBlue">Finned Fish program</h4>
+		<p>Finned Fish is solved using the concept of BaseSet/CoverSet and Fin.<br>
+		<a href="page34.html#FishPro">Fish_Basic</a> is in the X-Wing(Fish) section.</p>
+
+		<pre class="line-numbers" class="prismOp">
+<code class="language-csharp">public partial class FishGen: AnalyzerBaseV2{
+    public bool FinnedXWing(){     return Fish_Basic(2,true); }
+    public bool FinnedSwordFish(){ return Fish_Basic(3,true); }
+    public bool FinnedJellyFish(){ return Fish_Basic(4,true); }
+    public bool FinnedSquirmbag(){ return Fish_Basic(5,true); }
+    public bool FinnedWhale(){     return Fish_Basic(6,true); }
+    public bool FinnedLeviathan(){ return Fish_Basic(7,true); }
+}</small></code></pre>
+	</section>
+	<br><br>
+</article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+	<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

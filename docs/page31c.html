@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku  Hidden Single</title>
+ 
+	<!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+<!-- -------------------------------------------------------------------------- -->
+<article id="main">
+	<section>
+		<h3 id="head_bg_Blue">Hidden Single</h2>
+		
+		<img class="imgL" src="images/img31/img31c.png" alt="Hidden Single" width="30%">
+		<p>"In a cell group that makes up House,
+		if it is the only cell that has a certain digit N as a candidate,
+		that cell is determined to be the digit N".<br><br>
+		In the example on the left, set X=4.</p>
+		<p class="newLine"/><br>
+	
+		
+		<h4 id="head_bg_LightBlue">Example</h4>
+		<img class="imgL" src="images/img31/img31c_10.png" alt="Hidden Single" width="30%">
+		<p>The digits displayed in red of each cell is unique in one of row/column/block house, and it is determined.</p>
+		<p class="newLine">...6.83....7..45..6..73.428.6.....13..4...6.....3..2.7518.2..3.4.3..6...296...7..</p>
+
+		<h4 id="head_bg_LightBlue">Hidden Single C# program</h4>
+		<pre class="line-numbers" class="prismOp">
+<code class="language-csharp"><small>public class SimpleSingleGen: AnalyzerBaseV2{
+    public bool HiddenSingle( ){
+        bool  SolFond=false;
+        for( int no=0; no&lt;9; no++ ){
+            int noB=1&lt;&lt;no;
+            for( int tfx=0; tfx&lt;27; tfx++ ){
+                if( pBDL.IEGetCellInHouse(tfx,noB).Count()==1 ){
+                    SolFond=true;
+                    var P=pBDL.IEGetCellInHouse(tfx,noB).First();
+                    if(P.FreeBC==1)  continue;
+                    P.FixedNo=no+1;
+                    if( !MltSolOn )  goto LFond;
+                }
+            }
+        }
+
+        LFond:
+        if(SolFond){
+            .
+            . (Solution report code)
+            .
+			return true;
+        }
+        return false;
+    }
+}</small></code></pre>
+	</section>
+	<br><br><br>
+	
+</section>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+	<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

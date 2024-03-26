@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku DeathBlossom...Algorithm considerations(v5)</title>
+	
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+
+
+
+    <!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section>
+            <h3 id="head_bg_LightBlue">&nbsp; DeathBlossom...Algorithm considerations(v5)</h3>
+            <p>
+                Further developing the DeathBlossom algorithm.<br>
+                This discussion assumes the following knowledge :&nbsp;
+                <a href="page25.html">Link</a>
+                <a href="page26.html">ALS、</a>
+                <a href="page28.html#AIC">AIC、</a>
+                <a href="page53a.html">ALS DeathBlossom</a>
+            </p><br>
+
+
+            <h3 id="head_bg_Blue">&nbsp; (1) DeathBlossom basic form</h3>
+            <p>
+                DeathBlossom uses links by ALS.。<br><br>
+                <img src="images/img53b/img53b_20.png" width="60%" alt="DeathBlossom"><br><br><br>
+                
+                (*) The number of ALS links equal to the number of elements in the stem cell are
+                arranged as shown in the following figure.<br>
+                Assuming that a certain digit(z in the figure) is true,
+                all ALS will be changed to LockedSet and there will be no stem cell candidates.
+                Therefore, assuming that a certain digit(z) is true is incorrect, and z is false.<br><br>
+
+                <img src="images/img53b/img53b_21.png" width="60%" alt="DeathBlossom"><br><br><br>
+            </p>
+
+
+            <h3 id="head_bg_Blue">(2) DeathBlossom improvement method</h3>
+            <p>
+                How the DeathBlossom algorithm works and how to improve:
+                <ol>
+                    <li> Weak link algorithm : <br>
+                        ALS links are weak links.
+                        If it is a weak link, the algorithm will work.
+                        In other words, intra-cell links, inter-cell links, and AIC are also weak links;
+                        and algorithms that combine these can be constructed.
+                        It can also be extended to other weak links.</li><br>
+
+                    <li> Connected links<br>
+                        DeathBlossom can be configured as long as it is a weak link.
+                        A weak link in this case is not limited to a single link.
+                        Same as the Force algorithm, it is also possible for weak links of connected links. <br>
+                        (In GNPX v5. Equipped with DeathBlossom, which includes concatenated links.)</li><br>
+
+                    <li> Effect of ALS becoming LockedSet<br>
+                        When ALS changes by lockedSet due to digit confirmation outside ALS,
+                        elements within the ALS may become fixed.
+                        <ol style="padding-left:10px">The following effects occur:
+                            <li>One element in ALS is determined.</li>
+                            <li>A LockedSet is generated from a subset of elements within the ALS.</li>
+                            <li>That determination will have a ripple effect on determining other elements.</li>
+                        </ol>
+                        Here are some examples:<br><br>
+                        <img src="images/img53b/img53b_22.png" width="60%" alt="DeathBlossom">
+                        <img src="images/img53b/img53b_23.png" width="60%" alt="DeathBlossom"><br><br>
+                    </li>
+                </ul>
+            </p>
+        </section>
+    </article>
+
+	    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+		<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+	</footer>
+
+</body>
+</html>

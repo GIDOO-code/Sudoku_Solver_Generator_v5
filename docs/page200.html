@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Hardest SuDoKu</title>
+	
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+
+	<style>
+		table{
+			border: 1px solid black;
+			border-collapse: collapse;
+			font-size: 0.8em;
+			th, td{
+				padding: 0.2em;
+				border: 1px solid black;
+				border-collapse: collapse ;
+				width: 120px;
+			}
+		}
+	</style>
+
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!-- -------------------------------------------------------------------------- -->
+	<article id="main" style="padding: 30px;">
+		<section><br>
+			<h3 id="head_bg_Blue">&nbsp;Analysis of Hardest SuDoKu -1</h3>
+			<p>"The World's Hardest Sudoku" (2012, abbreviated as WHS) is a problem created by Finnish mathematician Arto Inkala.<br>
+				The problem is on the left, the solution is on the right, and there is only one solution.<br>
+				<img src="images/img200/img200_10_HardestSuDoKu.png" style="float:center" width="25%"> &nbsp;&nbsp;
+				<img src="images/img200/img200_11_HardestSuDoKuSolution.png" style="float:center" width="25%"><br>
+				This problem is difficult to solve using a logical algorithm, and even GNPX (v4) cannot solve it.
+				On the other hand, solving by trial and error is possible with relatively simple code.
+				The solution in the above right figure was obtained using the code included in GNPX.
+				Please note that GNPX does not recognize Try and Error as a solution algorithm, 
+				so it is not included in the normal solution list.
+				<br><br>
+
+			<h4>id="head_bg_LightBlue"> (1) Characteristics of WHS</h4>
+				<p>
+				<ul>
+					<li> Element count<br>
+						Candidate digits for WHS unconfirmed cells are distributed as follows.<br>
+						&nbsp;<img src="images/img200/img200_12_Candidate.png" style="float:center" width="30%"><br><br>
+						Calculate the distribution of the number of candidate digits in cells. 
+						There is only one cell with candidate number 2, which is extremely rare for a Sudoku problem.
+						Also, the cell with candidate number 3 is 11.
+						Which is related to the fact that there are fewer hints for solving Sudoku problems.<br>
+						<table style="width:80%">
+							<tr align="center">
+								<th width="240px">number of candidate digits<</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th>
+							</tr>
+							<tr align="center">
+								<td width="240px">number of cells</td><td>1</td><td>11</td><td>25</td><td>20</td><td>2</td><td>1</td><td>0</td><td>0</td>
+							</tr>
+						</table>
+
+
+					</li><br><br>
+
+					<li> Distribution of candidate digits<br>
+						Candidate digits are displayed in color.<br>
+						<img src="images/img200/img200_20_0.png" width="30%"><br><br>
+						Additionally, only one digit was displayed in color. The digit 7 seems a little small,
+						but all the digits are spread over the entire board.
+						It is widely distributed and no distinctive features are visible.
+						Also, any digit is placed in 3 or more places in many rows, columns, and blocks.
+
+						A <strong>Strong Link</strong> with two candidates in one row/column/block is
+						<strong>13 links (r9#1,b8#1, c5#5,b2#5,r6#5,b6#5,r7#5, r6#7,b4#7,c3#7 ,c2#8, b4#8, b1#9)</strong>only.
+						The lack of strong links may be a factor in the difficulty of the problem.<br>
+
+						<br>
+						<img src="images/img200/img200_20_1.png" width="30%">
+						<img src="images/img200/img200_20_2.png" width="30%">
+						<img src="images/img200/img200_20_3.png" width="30%">
+						<img src="images/img200/img200_20_4.png" width="30%">
+						<img src="images/img200/img200_20_5.png" width="30%">
+						<img src="images/img200/img200_20_6.png" width="30%">
+						<img src="images/img200/img200_20_7.png" width="30%">
+						<img src="images/img200/img200_20_8.png" width="30%">
+						<img src="images/img200/img200_20_9.png" width="30%">
+					</li>
+				</ul>
+			</p><bR><bR>
+
+			<h4 id="head_bg_LightBlue"> (2) WHS reduction Puzzle</h4>
+				<p>
+					WHS has 21 digits in Puzzle.
+					If any of these digits are excluded, it is no longer a Sudoku Puzzle. <br>.
+					For example, in the problem where r1c1#8 is left blank (see the figure below),
+					there are 292 number pattern arrays that satisfy this problem. <br>
+					All number pattern arrays are located in the <strong>WHS_data</strong> folder.。<br>
+					<img src="images/img200/img200_21_smaller.png" width="25%"><br>
+					<small>
+					...........36......7..9.2...5...7.......457.....1...3...1....68..85...1..9....4.. solutions:292<br>
+					214738659983652174675491283159367842836245791742189536521974368468523917397816425<br>
+					214758693983612574675493281852367149139845726467129835521974368748536912396281457<br>
+					214783659983652147675491283452367891139845726867129534521974368748536912396218475<br>
+					214783659983652147675491283459367821132845796867129534521974368748536912396218475<br>
+					214783659983652174675491283152937846836245791749168532521374968468529317397816425<br>
+					...(6-287 omission)<br>
+					985721643213654897674893251859367124132945786467182539521479368748536912396218475<br>
+					985723641213654897674891253859367124132945786467182539521479368748536912396218475<br>
+					985732641243651879176498253359267184812345796764189532521974368438526917697813425<br>
+					985732641243651879176498253852367194319245786764189532521974368438526917697813425<br>
+					985732641243651879176498253854367192319245786762189534521974368438526917697813425<br><bR>
+					</small>
+					There are many number patterns even in other Puzzle where the digits are left blank.
+					The situation is shown in the figure.
+					The maximum number of patterns is the Puzzle with r6c8#3 blank, which has 3408 patterns.
+					Furthermore, the condition for Sudoku Puzzle is to "have a unique solution",
+					and WHS reduced Puzzle are not Sudoku (I am aware that there are different opinions).<br><br>
+					<img src="images/img200/img200_22_WHSsmall.png" width="25%" style="float:left;"><br>
+					&nbsp; Upper row: Puzzle digits<br>
+					&nbsp; Lower row: Number of patterns (number of patterns when the upper row digit is blank)<br>
+					<p style="clear: both" ><br><br>
+				</p>
+
+						
+			<h4 id="head_bg_LightBlue"> (3) WHS enlarged Puzzle</h4>
+			<p>
+				There are also Puzzle in which the solution digit is added by 1 to the WHS.
+				Applying these to GNPX(v4).
+				There are 60 blank spaces on the WHS, so there are 60 Puzzle.
+				Of these, GNPX(v4) can solve the Puzzle by adding digits in 8 places.
+				The algorithm used at that time is a common one in the <strong>(Finned)Fish system, ALS system, ALS-Chain, SueDeCoq, etc.<br><br>
+				<img src="images/img200/img200_23_WHSadd1.png" width="25%" style="float:left;"><br><br>
+				&nbsp; The surplus is the original Puzzle<br>
+				&nbsp; Puzzle in which the red parts are added one by one can be solved with GNPX(v4).<br></p>
+				&nbsp; If you enter the problem file "hardSuDoKu_Transformed_12Added.txt" in NPX, you can see how it is solved.<br>
+
+					<p style="clear: both"/><br>
+				<small>
+					WHS+r1c6#3: LastDigit[20] NakedSingle[26] HiddenSingle[13] LockedCandidate[3] LockedSet(2D)Hidden[1] Finned XWing[1] ALS-XZ[3]<br><br>
+					WHS+r1c7#6: LastDigit[21] NakedSingle[29] HiddenSingle[9] LockedCandidate[7] LockedSet(2D)[4] LockedSet(2D)Hidden[3] LockedSet(3D)[1] XWing[1] Finned XWing[4] W-Wing[1] ALS-XZ[5] ALS-XY-Wing[3]<br><br>
+					WHS+r3c9#3: LastDigit[21] NakedSingle[26] HiddenSingle[12] LockedCandidate[8] LockedSet(2D)[3] LockedSet(2D)Hidden[3] LockedSet(3D)[1] XWing[1] Finned XWing[4] W-Wing[1] ALS-XZ[5] ALS-XY-Wing[3]<br><br>
+					WHS+r4c3#4: LastDigit[21] NakedSingle[28] HiddenSingle[10] LockedCandidate[5] LockedSet(2D)[6] LockedSet(3D)[1] Finned XWing[2] XYChain[1] ALS-XZ[3] ALS-XY-Wing[3] ALS-Chain[2]<br><br>
+					WHS+r4c9#6: LastDigit[20] NakedSingle[29] HiddenSingle[10] LockedCandidate[2] LockedSet(2D)[1] LockedSet(2D)Hidden[1] SueDeCoq[1] ALS-XZ[1]<br><br>
+					WHS+r5c2#6: LastDigit[21] NakedSingle[20] HiddenSingle[18] LockedCandidate[5] LockedSet(2D)Hidden[2] XWing[1] ALS-XY-Wing[1] ALS-Chain[4]<br><br>
+					WHS+r6c9#4: LastDigit[21] NakedSingle[29] HiddenSingle[9] LockedCandidate[5] LockedSet(2D)[6] LockedSet(3D)[1] Finned XWing[2] XYChain[1] ALS-XZ[3] ALS-XY-Wing[2] ALS-Chain[2]<br><br>
+					WHS+r9c4#3: LastDigit[20] NakedSingle[27] HiddenSingle[12] LockedCandidate[4] LockedSet(2D)Hidden[1] Finned XWing[1] ALS-XZ[2]<br>
+					(The numbers in [] are the number of times used.)
+				</small>
+
+				Also, none of the Puzzle in which the green numbers in the following figure were added one by one could be solved using GNPX.
+				Including these, 52/60 (86.7%) of the Puzzle cannot be solved.<br><br>
+				<img src="images/img200/img200_24_WHSadd1unsolved.png" width="25%" style="float:left;"><br><br>
+				&nbsp; The surplus is the original Puzzle<br>
+				&nbsp; Any Puzzle in which one green digit is added cannot be solved with GNPX.<br><br>
+					<p class="newLine"></p><br><br>
+
+				By the way, 816/1770 (46.1%) of the Puzzle that added 2 solution digits to WHS were solved with GNP.<br>
+				These Puzzle and the algorithms applied can be found in the data file.<br>
+				(You can download it from GitHub).
+				<br><br>
+				
+			</p><br><br>
+			<h4 id="head_bg_LightBlue"> (4) ... continue.</h4>
+			<br><br>
+		</section>
+	</section>
+
+	    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+		<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+	</footer>
+	</div>
+
+</body>
+</html>

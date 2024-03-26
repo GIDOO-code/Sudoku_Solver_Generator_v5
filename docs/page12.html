@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="utf-8">
+	<title>Sudoku Algorithm Permutation</title>
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<link rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link rel="stylesheet" href="jq_treeview/screen.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+
+
+<body id="page">
+	<a id="pageTop"></a>
+
+    <header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+    </header>
+
+<!-- ========================================================================== -->
+<div id="menuList">
+    <aside>
+        <br><br>
+        <ul style="padding-left: 0px">
+            <li><a href="page11.html">Permutation</a></li>
+            <li><a href="page12.html">Combination</a></li>
+        
+            <li><a href="page13.html">Board/Cell/Candidate digits/House</a></li>
+            <li><a href="page14.html">Latin Square</a></li>
+        </ul>
+    </aside>
+</div>
+
+<!-- -------------------------------------------------------------------------- -->
+
+    <article id="main">
+        <section>
+            <a id="combination"></a>
+            <h3 id="head_bg_Blue">Combination</h3>
+            <img src="images/imgTop/download_image.png" width="48">
+            <a href="download/CombinationTest.lzh" download="CombinationTest.lzh">CombinationTest.lzh</a>
+
+            <p>
+                A permutation is a group of generated numbers in an order, but a combination is a group of numbers without an order.
+                As with permutations, we use a combination generation class with a skip function. <br>
+                Combinatorial generation is basically a class like this:
+            </p>
+			<pre class="line-numbers" class="prismOp">
+<code class="language-csharp">public class Combination{
+    private int N;
+    private int R;
+    public  int[] Index=null;
+    private bool First=false;
+
+    public Combination( int N, int R ){
+        this.N=N;
+        this.R=R;
+        if( R&gt;0 && R&lt;=N ){
+            Cmb=new int[R];
+            Cmb[0]=0;
+            for( int m=1; m&lt;R; m++ ) Index[m]=Index[m-1]+1;
+            First=true;
+        }
+    }
+    public bool Successor(int skip=int.MaxValue){
+        if(N&lt;=0) return false;
+        if(First){ First=false; return (Index!=null); }
+
+        int k;
+        if(Index[0]==N-R) return false;
+        if(skip&lt;R-1){
+            for(k=skip; k>=0; k--){ if(Index[k]&lt;=N-R) break; }
+            if(k<0)  return false;
+        }
+        else{
+            for(k=R-1; k>0 && Index[k]==N-R+k; --k);
+        }
+
+        ++Index[k];
+        for(int j=k; j&lt;R-1; ++j)  Index[j+1]=Index[j]+1;
+        return true;
+    }
+}</code></pre>
+                
+                <p>
+                    Combination is used as follows. <br>
+                    The change position of the next combination generation can be changed dynamically.
+                    The position specification is from 0 to (combination size - 1),
+                    In other cases, or if the specification is omitted, the skip function will not work.
+                </p>
+                
+                <pre class="line-numbers" class="prismOp">
+<code class="language-csharp">>var cmb = new Combination (6,3);
+int skip=4;
+    while(cmb.Successor(skip) ){
+      //  (Evaluation process : Set change position skip for next combination generation)
+}</code></pre><br>
+
+            <h4 id="head_bg_LightBlue">Test code</h3>
+                <pre class="line-numbers" class="prismOp">
+<code class="language-csharp">static void Main( string[ ] args ){
+    for( int skip=0; skip&lt;5; skip++ ){
+        Combination cmb = new Combination(6,4);
+        Console.WriteLine("\n ===== Combination(6,4) skip={0}",skip );
+        while( cmb.Successor(skip) )  Console.WriteLine(cmb);
+        Console.ReadKey();
+    }
+}</code></pre>
+
+
+	<h4 id="head_bg_LightBlue">Execution results</h4>
+    <p>(left: combination generation results, right: working data inside the function)</p>
+<pre class="line-numbers" class="prismOp" >
+<code class="language-csharp" style="line-height: 1em">===== Combination(6,4) skip=0
+ 0 1 2 3
+ 1 2 3 4
+ 2 3 4 5
+
+ ===== Combination(6,4) skip=1
+ 0 1 2 3
+ 0 2 3 4
+ 0 3 4 5
+ 1 2 3 4
+ 1 3 4 5
+ 2 3 4 5
+
+ ===== Combination(6,4) skip=2
+ 0 1 2 3
+ 0 1 3 4
+ 0 2 3 4
+ 0 3 4 5
+ 1 2 3 4
+ 1 3 4 5
+ 2 3 4 5
+ 
+===== Combination(6,4) skip=3
+ 0 1 2 3
+ 0 1 2 4
+ 0 1 2 5
+ 0 1 3 4
+ 0 1 3 5
+ 0 1 4 5
+ 0 2 3 4
+ 0 2 3 5
+ 0 2 4 5
+ 0 3 4 5
+ 1 2 3 4
+ 1 2 3 5
+ 1 2 4 5
+ 1 3 4 5
+ 2 3 4 5
+
+ ===== Combination(6,4) skip=4
+ 0 1 2 3
+ 0 1 2 4
+ 0 1 2 5
+ 0 1 3 4
+ 0 1 3 5
+ 0 1 4 5
+ 0 2 3 4
+ 0 2 3 5
+ 0 2 4 5
+ 0 3 4 5
+ 1 2 3 4
+ 1 2 3 5
+ 1 2 4 5
+ 1 3 4 5
+ 2 3 4 5</code></pre><br>
+
+        </section>
+    </article>
+
+	    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+        <p id="copyright"> Copyright &copy; 2014-  GNPX. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

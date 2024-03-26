@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section><br><br>
+            <h3 id="head_bg_LightBlue">&nbsp;eNetwork Analysis Algorithm</h3>
+            <p>
+                Various Sudoku analysis algorithms can be created
+                by replacing conventional links (inter-cell links, intra-cell links, ALS links) with eNetwork.<br><br>
+
+                Also, by separating the network exploration, each algorithm can focus on its own processing.<br>
+                In addition, by specializing in network search,
+                Even if the types of links are expanded, there will be no/minimal changes to the respective Sudoku analysis algorithms.
+            </p>
+
+            <h4 id="head_bg_Blue">&nbsp;(1) NiceLoop</h4>
+            <p>
+                Expand the link types and replace the link string connecting the origin nodes with eNetwork and develop it into eNetwork_NiceLoop.
+                The obtained NiceLoop is the same, but by separating the network search,
+                The NiceLoop code consists of preparation, determining loop formation, and summarizing the results.
+            </p>
+
+            <h4 id="head_bg_Blue">&nbsp;(2) eNW_DeathBlossom(eNetwork_DeathBlossom)</h4>
+            <p>
+                DeathBlossom evolves into eNetwork_DeathBlossom.<br>
+                &nbsp;XYZ-Wing => DeathBlossom => ALS Death Blossom => eNetwork_DeathBlossom<br><br>
+                DeathBlossom is an algorithm that connects Stem cells and other cells/numbers using links or ALS.
+                Replacing the linking situation with an eNetwork is a natural extension.<br>
+
+                Note that eNW_DeathBlossom and Force_Chain_Cell are algorithms with symmetric state attributes and network directions.<br><br>
+                <img src="images/img107/image107_DeathBlossom.png" width="25%">
+                &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/img107/image107_FocChain_Cell.png" width="25%" alt="eNetwork_DeathBlossom">
+            </p>
+
+            <h4 id="head_bg_Blue">&nbsp;(3) ForceChain(ForceChain_Cell, ForceChain_House, ForceChain_Contradiction)</h4>
+            <p>
+                The ForceChain-based algorithm is the second phase of radial network search,
+                selection and confirmation processing, and summary of the results.
+                ForceChain_Contradiction is when the state of the end node is "affirmative and negative"
+            </p>
+
+        </section><br><br>
+    </article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku W-Wing</title>
+	
+	<!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+	
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+		<script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+	<section id="menuList">
+		<script type="text/javascript"> writeNaviAlgorithm(); </script>
+	</section>
+
+<!-- -------------------------------------------------------------------------- -->
+<article id="main">
+	<section>
+		<h3 id="head_bg_Blue">W-Wing</h2>
+		<p>
+		W-Wing is an analysis algorithm composed of bivalue cell and link.
+		Assume that a pair of bivalue cells(green frames) with the same candidate numbers(x,y)
+		are associated with ①weak link ②strong link ③weak link of number x(Left figure).
+		
+		It is explained in the following figure.
+		Let's assume that a pair of bivalue cells (green frames) with the same candidate numbers (x, y) are associated
+		with ① weak link ② strong link ③ weak link of number x. (Left figure).
+		At this time, the cell(orange frame) related to the two bivalue cells(green frame)
+		can not have the candidate number y(right picture).<br>
+		</p>
+		
+		<p>
+			<img src="images/img43/img43a.png" alt="W-Wing" width="60%">
+		</p>
+		
+		<p>The analysis algorithm is as follows.
+			<ol>
+				<li>Create a list of bivalue cells</li>
+				<li>Choose 2 cells(P,Q) by combination from the list of bivalue cells.<br>
+				(Check that P and Q have the same candidate number and belong to different House)</li>
+				<li>Choose one strong link L.<br>
+				(Both end cells of L form a weak link with P, Q.</li>
+				<li>Check whether there are exclusion candidates in the common part of P influence zone and Q influence zone.</li>
+			</ol>
+		</p>
+	
+		<br>
+		<p>Here is an sample of W-Wing.
+		In the scene on the right, there are 9 W-Wings in all, including this solution.</p>
+		<img src="images/img43/img43_10.png" alt="W-Wing" width="30%">
+		<img src="images/img43/img43_11.png" alt="W-Wing" width="30%">
+		<small>
+		<p class="newLine">..973..81.8...9...7.5.84..33....82.74.2.......786..4.5...8.6..26........8.74.15.6<br>
+						.4......512..7..8667..9.32......7..2..28.37..4..2......93.8..5771..5..638......9. <br></p></small>
+
+
+						
+		<h4 id="head_bg_LightBlue">W-Wing C# program</h4>
+		<p>The following is an analysis program of W-Wing. The above algorithm is coded in order.<br>
+		i will supplement one point only.
+		&quot;P and Q are weak link&quot; is checked by the ConnectedCells function,
+		instead of searching for weak links.</p>
+		<pre class="line-numbers" class="prismOp">
+<code class="language-csharp"><small>public partial class CellLinkGen: AnalyzerBaseV2{
+    public bool  Wwing( ){
+        if(BVCellLst==null)  BVCellLst = pBDL.FindAll(p=&gt;(p.FreeBC==2)); //BV:bivalue
+        if(BVCellLst.Count&lt;2) return false;
+        BVCellLst.Sort((A,B)=&gt;(A.FreeB-B.FreeB));
+
+        CeLKMan.PrepareCellLink(1);    //strong Link
+
+        bool Wwing=false;
+        var  cmb = new Combination(BVCellLst.Count,2);
+        int nxt=99;
+        while(cmb.Successor(nxt)){
+            UCell P=BVCellLst[cmb.Cmb[0]];
+            UCell Q=BVCellLst[cmb.Cmb[1]];
+            nxt=0;
+            if( P.FreeB!=Q.FreeB ) continue;
+            nxt=1;
+            if( ConnectedCells[P.rc].IsHit(Q.rc) ) continue;
+
+            foreach( var L in CeLKMan.IEGetCellInHouse(1) ){//1:strong
+                int no1B=(1&lt;&lt;L.no);
+                if( (P.FreeB&no1B)==0 ) continue;
+                if( L.rc1==P.rc || L.rc2==Q.rc ) continue;
+                if( !ConnectedCells[P.rc].IsHit(L.rc1) )  continue;
+                if( !ConnectedCells[Q.rc].IsHit(L.rc2) )  continue;
+                int no2B=P.FreeB.BitReset(L.no);
+                
+                string msg2=&quot;&quot;;
+                Bit81 Elm= ConnectedCells[P.rc] & ConnectedCells[Q.rc];
+                foreach( var E in Elm.IEGetUCeNoB(pBDL,no2B) ){
+                    E.CancelB=no2B; Wwing=true; //W-Wing fond
+                    if(SolInfoDsp) msg2 += &quot; &quot;+E.rc.ToRCString();
+                }
+
+                if(Wwing){
+                    .
+                    . (Solution report code)
+                    .
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}</small></code></pre>
+
+	</section>
+	<br><br>
+</article>
+
+	    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+		<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+	</footer>
+
+</body>
+
+</html>

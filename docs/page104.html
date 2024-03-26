@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section><br><br>
+            <h3 id="head_bg_Blue">&nbsp;Link</h3>
+            <p>
+                Links are the basis for various Sudoku parsing algorithms.
+                Assemble a network-type algorithm using the links defined here. <br>
+                It is a "simplified expression" that prioritizes overall ease of understanding and places accuracy second.
+
+                i look forward to your warm feelings, kind eyes, and understanding.
+            </p>
+
+            <h4 id="head_bg_LightBlue">&nbsp;(1)&nbsp;Intercell link</h4>
+            <p>
+                The simplest link is an intercell link.<br>
+                There are two types of intercell links: strong links and weak links.
+
+                <ul>
+                    <li>
+                        A strong link is a state in which there are two cells with the target digit "a" in one house.
+                        The image below on the left shows strong links in the House of rows, columns, and blocks.
+                        A strong link propagates "a" or "not a" for one cell to the other cell.
+                    </li><br>
+                    
+                    <li>
+                        A weak link is a state in which there are three or more cells with the target digit "a" in one house.
+                        The image below on the right shows weak links in the House of rows, columns, and blocks.
+                        With weak links, if one cell is "a", the remaining cells are propagated as "not a". Strong links are also weak links.
+                    </li>
+                </ul>
+            </p>
+            <p style="padding-left: 20px">
+                <img src="images/img104/img104StrongLink.png" width="25%">
+                <img src="images/img104/img104WeakLink.png" width="25%">
+            </p>
+            <br>
+
+
+            <h4 id="head_bg_LightBlue">&nbsp;(2)&nbsp;Intracell link</h4>
+            <p>
+                Intracell link are also one of the simplest types of links. <br>
+                Intracell link are digits link in one cell. 
+                If the number of elements is 2,it is a strong link,
+                and if the number of elements is 3 or more, it is a weak link.
+            </p>
+                <p style="padding-left: 20px">
+                <img src="images/img104/img104IntraCellLink.png" width="30%">
+            </p>
+
+
+            <h4 id="head_bg_LightBlue">&nbsp;(3)&nbsp;ALS Link</h4>
+            <p>
+                ALS is one more digit than LokedSet.
+                When one element digit of ALS is determined negatively by a link, ALS changes to LockedSet.
+                In other words, the external element and ALS form a weak link.
+            </p>
+            <p style="padding-left: 20px">
+                <img src="images/img104/img104_ALS_Link.png" width="50%">
+            </p>
+
+            <h4 id="head_bg_LightBlue">&nbsp;(4)&nbsp;AIC Link</h4>
+            <a href="page28.html"><img src="images/imgTop/jumpBefore.png" height="16"> AIC definition (details)</a>
+            <p>
+                For cell groups,
+                constraints are transmitted from the direction in which the cell arrangement is extended (House),
+                and constraints are transmitted in the direction in which the cell arrangement is extended. <br>
+                If cell group B of the link is a single cell, constraints are transmitted in multiple directions(multiple Houses).
+                <p style="padding-left: 20px">
+                    <img src="images/img104/img104_AIC_1.png" width="50%" alt="AIC Link">
+                </p>
+            </p>
+
+            <h4 id="head_bg_LightBlue">&nbsp;(4)&nbsp;ALS_XZ link</h4>
+            <a href="page50.html"><img src="images/imgTop/jumpBefore.png" height="16"> ALS_XZ</a>
+            <p>
+                ALS_XZ link was developed experimentally as a first attempt to explore various links. <br>
+                ALS_XZ is a state in which two ALS are connected by RCC.
+                ALS_XZ doubly_linked is a case where there are two RCCs, which are Locked. <br><br>
+                In other words, the pair A2LS,ALS with two RCCs becomes a link.<br>
+                
+                <p style="padding-left: 20px">
+                    <img src="images/img104/img104_ALSXZ_1.png" width="50%" alt="ALS_XZ Link">
+                </p>
+                Note that A2LS is a group of cells in House, and there are (n+2) candidate digits in n cells. <br>
+                In GNPX ver5, AnLS is defined as a base class and ALS is defined as a derived class.
+            </p><br><br>
+            
+            <h3 id="head_bg_Blue">&nbsp;Finned</h3>
+            <p>
+                In Sudoku solving, cells with fins often appear.
+                For example, Finned LockedSet, Finned Fish, Finned ALS(A2ls), Finned ALS-XZ singly linked(n=1 SueDeCoqEx).<br>
+                For finned cells, as follows.
+                <ul>
+                    <lI>Finned "Locked" becomes a link. </lI>
+                    <li>Strong/Week link between cells is "Finned cell". </li>
+                </ul>
+                Thinking about Sudoku algorithms from the perspective of "locked" and "finned"
+                may provide hints for developing new Sudoku algorithms.<br><br>
+                <img src="images/img104/image104_Finned_link.png" width="70%" alt="Finned Link">
+            </p><br><br>
+            <br>
+
+        </section>
+    </article>
+
+    <a href="#" class="pagetop">Top</a>
+
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

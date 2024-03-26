@@ -1,0 +1,207 @@
+﻿@charset "utf-8";
+
+.icon-new{
+    margin: 5px;
+    display: inline-block;
+    font-size: 10px;
+    background-color: #c17ee7;
+    color: white;
+    padding: 1px 3px 0;
+}
+
+.prismOp{
+    font-size: 70%;
+    font-weight: 300;
+    line-height: 0.9;
+}
+
+#head_bg_Blue{
+    width:   auto;
+    background-color:#aaf;
+}
+
+#head_bg_LightBlue{
+    width:   auto;
+    background-color:rgb(196, 235, 210);
+}
+
+
+#page0{
+    margin: 0 auto;
+    height: auto;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: "areaHead"
+                        "areaMain"
+                        "areaFoot";
+    background-color: #fff;
+
+    #head{
+        grid-area: areaHead;
+    }
+
+
+/*
+    #menuList{
+        grid-area: areaMenuList;
+        padding-top: 60px;
+        font-size: 70%;
+        background-color: #eee
+    }
+*/
+    #main{
+        grid-area: areaMain;
+        padding-top: 40px;
+    }
+    #foot{ grid-area: areaFoot; }
+
+    .font_medium{ font-size: 0.7em; }
+}
+
+
+#page{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 70px auto auto;
+    grid-template-areas: "areaHead areaHead"
+                        "areaMenuList areaMain"
+                        "areaFoot areaFoot";
+    #head{
+        grid-area: areaHead;
+    }
+
+    #menuList{
+        grid-area: areaMenuList;
+        padding-top: 0px;
+        padding-left: 20px;
+        line-height: 1em;
+        font-size: 90%;
+        background-color:rgb(242, 242, 250)
+    }
+    #main{
+        grid-area: areaMain;
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+    #foot{ grid-area: areaFoot; }
+    .font_medium{ font-size: 0.7em; }
+}
+
+p{ line-height:1.4; }
+a:link, a:visited{
+    color:#00c;
+    text-decoration: none;
+}
+a:hover{ color:#0cc; }
+
+
+#main{
+    grid-area: areaMain;
+    .LG{
+        display:block;
+        font-family: "MS Gothic", Meiryo, sans-serif;
+        font-size: small;
+    }
+
+    pre{
+        display: block;
+        background: #aaf;
+    }
+
+    section{
+        margin-top: 0px;
+        padding: 0px 20px;
+        clear: left;
+
+        h3{ margin: 0; }
+        .imgL{
+            float: left;
+            width: 30%;
+            margin: 0px 10px 0 10px;
+        }
+        .imgR{
+            float: right;
+            width: 30%;
+            margin: 0px 10px 20px;
+        }
+        .newLine{
+            clear: left;
+            padding-top: 0
+        }
+    }
+
+    .table1{
+        margin-left: 5px;
+        border-collapse:collapse;
+        border: 1px solid #000099;
+        background-color:rgb(251, 249, 255);
+        font-size: 80%;
+        .table_itemName{
+            border: 1px solid #000099;
+            text-align: center; 
+        }
+        .table_line{ border: 1px solid #000099; }
+    }
+}
+
+/*
+nav{
+    ul{
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0 ;
+        border: 2px solid #e0e0e0;
+        font-size: 12px;
+        font-family: sans-serif, Meiryo;
+        line-height: 1.3;
+    }
+    li{
+        display: block;
+        float: left;
+        border-right: 1px solid #AAA;
+    }
+
+    a{
+        display: block;
+        padding: 5px 25px;
+        text-decoration: none;
+        color: #0066CC; 
+    }
+    a:hover{
+        color: #CCCCFF;
+        background-color: #000080;
+    }
+    #current a{
+        background: #ffffff;
+    }
+
+    .naviL{
+        position: fixed;
+        display: block;
+        background-color: white;
+        p{
+            height: 20px;
+    
+            display: block;
+            font-weight: bold;
+            font-size: small;
+            text-decoration: none;
+            color: navy;  
+        }
+        li{
+            display: block;
+            width: 100%;
+            border-right: 1px solid #e0e0e0;
+        }
+        a{
+            display: block;
+            padding: 0px 5px;
+            text-decoration: none;
+            color: navy; 
+        }
+    }
+}
+*/

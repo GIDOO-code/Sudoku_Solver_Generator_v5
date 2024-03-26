@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" >
+	<link   rel="stylesheet" href="jq_treeview/screen.css" >
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+
+<!--
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+-->
+    
+<!-- -------------------------------------------------------------------------- -->
+    <article id="main">
+        <section>
+            <h3 id="head_bg_Blue">&nbsp;SueDeCoq Family</h3>
+			<br>
+			&nbsp;&nbsp;&nbsp;<a href="page45_v5.html"> SueDeCoqEx <img src="images/imgTop/jumpTo.png" width="20px"></a>
+
+            <p>
+				SueDeCoq is Locked, which consists of AnLS and ALS. <br>
+				The definition of SueDeCoq(traditional) used cell placement and digits within the cells.
+				The SueDeCoq definition has been abstracted, and <a href="page45_v5.html"> SueDeCoqEx</a> was reconfigured using ALS and AnLS.
+				Abstracted algorithms have been simplified and several extended algorithms have been developed.<br>
+
+				Additionally, the bit representation of cell placement simplifies the algorithm and code.
+				Correct code can also be easily generated (bug prevention and bug detection).
+				The solution obtained with SueDeCoqEx has a complex shape, but is relatively fast.
+			</p>
+
+			overview :
+			<ol>
+				<li> SueDeCoq consists of AnLS and ALS.	</li>
+				<li> SueDeCoqEx : SueDeCoq(traditional) is a special case of n=2 in AnLS. Relax the constraints on House..</li>
+				<li> Extend SueDeCoqex n=2 to the cases n=1 and n=3.
+					n=3 is named<a href="page45_v5.html#Franken_SueDeCoqEx3"> Franken SueDeCoq</a>.</li>
+				<li> SueDeCoqex n=1 is the same algorithm as <a href="page50.html#ALS_XZ_Doubly_Linked"> ALS-XZ doublylinked</a>.
+					Also, the algorithm for "Bent Naked Subset" is basically the same. (probably...lack of confirmation)</li>
+				<li> Finned SueDeCoq : Extend SueDeCoqEx to finned.
+					(The concept of extension is similar to the extension of Fish to Finned Fish.)</li>
+				<li> Finned SueDeCoqex n=1 is the same algorithm as<a href="page50.html"> ALS-XZ singlylinked.</a>.</li>
+			</ol><br>
+				
+			<img src="images/img108/image108_SDC_Family.png" width="95%" alt="SueDeCoq Family"><br><br>
+		</p>
+
+        </section><br><br>
+    </article>
+    
+    <a href="#" class="pagetop">Top</a>
+
+<footer id="foot">
+    <p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

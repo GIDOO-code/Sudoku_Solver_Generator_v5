@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku  Naked Single</title>
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>
+    </section>
+
+<!-- ========================================================================== -->
+<section id="menuList">
+	<aside>
+		<script type="text/javascript"> writeNaviAlgorithm(); </script>
+	</aside>
+</section>
+<!-- -------------------------------------------------------------------------- -->
+<article id="main">
+	<section>
+		<h3 id="head_bg_Blue">Naked Single</h2><br>
+		<img class="imgL" src="images/img31/img31b.png" alt="Naked Single" width=30% >
+		<p>"Naked Single" is "Candidate digit is one cell is fixed". <br>
+		This is also the rule of numerical placement of Sudoku.<br>
+		In the example on the left, set X=4.</p>
+		<p class="newLine"/><br>
+	
+		
+		<h4 id="head_bg_LightBlue">Example</h4>
+		<img class="imgL" src="images/img31/img31b_10.png" alt="Naked Single" width=30% >
+		<p>If the candidate digit of the cell is only one, it is fixed to that digit.</p>
+		<p class="newLine">.3217.6.88.4..9.7.75.......6....84572.......6.7.4.....3..5...84.2.9..5..4..61.7.2</p>
+
+		
+		<h4 id="head_bg_LightBlue">Naked Single C# program</h4>
+		<pre class="line-numbers" class="prismOp">
+<code class="language-csharp"><small>public class SimpleSingleGen: AnalyzerBaseV2{
+    public bool NakedSingle( ){
+        bool  SolFond=false;
+        foreach( UCell P in pBDL.Where(p=&gt;p.FreeBC==1) ){
+            SolFond=true;
+            P.FixedNo=P.FreeB.BitToNum()+1;
+            if(!MltSolOn)  goto LFond;
+        }
+
+        LFond:
+        if(SolFond){
+            .
+            . (Solution report code)
+            .
+			return true;
+        }
+        return false;
+    }
+}</small></code></pre>
+	</section>
+	<br><br><br>
+</section>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+	<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

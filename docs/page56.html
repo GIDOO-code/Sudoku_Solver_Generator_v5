@@ -1,0 +1,274 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Sudoku ForceChain</title>
+
+	<!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+    <link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+	
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+		<script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+	<section id="menuList">
+		<script type="text/javascript"> writeNaviAlgorithm(); </script>
+	</section>
+
+<article id="main">
+	<section>
+		<h3 id="head_bg_LightBlue">Forth</H3>
+		<p>
+			All Force-based algorithms use the current phase link.
+			The links are used to build a chain and logically derive the truth of the cell candidates.
+			<ol style="padding-left:20px">
+				<li>A set X has one element true and the rest false. Which element is true is undetermined.</li>
+				<li>A chain that starts with a true element determines the true/false of the elements led by the concatenation.</li>
+				<li>In a chain starting with false element, the value of the derived element is uncertain (it can be true or false).</li>
+				<li>For a chain that starts by assuming each element of set X to be true,
+					if the truth value of element A that all chains lead to is the same, the truth of element A is determined.</li>
+				<li>In a chain that starts by assuming that one element B of set X is true,
+					the starting element B is determined to be false if multiple roots lead to unequal truth values for element C.</li>
+			</ol>
+		
+			Set X is specifically rows, columns, blocks, and cells, as follows:<br><br>
+			<img src="images/img56/Force_set.png" width="25%" alt="Force"><br>
+
+			The (extended) link and chain structure of the Force method is relatively simple.
+			It is also an efficient method of analysis. In other words, a good analysis algorithm for Sudoku.
+			Forth algorithm is a logical algorithm.<br>
+			<a href="SudokuIsALogicalPuzzle.html">Sudoku is a logical puzzle</a>
+		</p><br><br><br>
+	</section>
+
+	<section>
+		<h3 id="head_bg_LightBlue">ForceChain</h3>
+		<p>ForceChain is an analysis algorithm that uses.<a href="page28.html">super link</a> </p>
+	</section>
+
+	<section>
+		<h3 id="head_bg_Blue">(1)ForceChain_Cell</h3>
+		<p>
+			Focused one unconfirmed cell A. Even if any of the candidate digits of cell A is assumed to be true,
+			when the digit#n of cell B to be linked becomes true, In B cell #n is determined to be true.<br>
+			<img src="images/img56/img56a.png" alt="ForceChain_Cell" width="25%" alt="ForceChain_Cell">
+		
+			When following the link assuming that the candidate digit#a is true,""
+			some digit in the cell may lead to both true and false.
+			This is the case of (3)ForceChain_Contradiction below,
+			the first proposition "#a is true" is an error,
+			Therefore, there is no link starting with "#a is true".
+			In the GNPX implementation, this case is not included in the solution of ForceChain_Cell,
+			but is solved by ForceChain_Contradiction.
+			
+			An sample of ForceChain_Cell. Cell r6c6 becomes #2 even if the digit in cell r2c8 is #1 or #2.
+			The link string at this time is shown.<br>
+			<img src="images/img56/img56_10.png" width="30%"  style="float:left; margin-top:8px;" alt="ForceChain_Cell">
+		
+			ForceChain_Cell<br><br>r6c6#2 is true<br>
+				<p style="clear: both"/>
+			<small>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 ->
+			r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [W r8c4/+2 -> r6c4/-2] => [S r6c4/-2 -> r6c6/+2]<br>
+			&#10047;[W r2c8/+2 -> r2c6/-2] => [S r2c6/-2 -> r6c6/+2]<br></small>
+				<p style="clear: both"/>
+			<small>1526.7.893...5...4...9.3..75.8...2.6.6.....9.9.3...4.14..5.6...6...3...573.4.1962</small>
+
+			<img src="images/img56/img56_10a.png" width="30%"  style="float:left; margin-top:8px;" alt="ForceChain_Cell"><br>
+			ForceChain_Cell<br><br>r6c6#2 is true<br>r2c6#8 is true<br>r6c4#8 is true
+				<p style="clear: both"/>
+		
+			<small> ForceChain_Cell r6c6#2 is true<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [W r8c4/+2 -> r6c4/-2] => [S r6c4/-2 -> r6c6/+2]<br>
+			&#10047;[W r2c8/+2 -> r2c6/-2] => [S r2c6/-2 -> r6c6/+2]<br><br>
+
+			ForceChain_Cell r2c6#8 is true<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S (ALS:r2468c4) r2c4/-1 -> r4c4/+3] => [W r4c4/+3 -> r4c8/-3] => [S r4c8/-3 -> r7c8/+3] => [S r7c8/-7 -> r7c5/+7] => [S r7c5/-2 -> r3c5/+2] => [W r3c5/+2 -> r2c6/-2] => [S r2c6/-2 -> r2c6/+8]<br>
+			&#10047;[W r2c8/+2 -> r3c8/-2] => [S r3c8/-2 -> r3c5/+2] => [W r3c5/+2 -> r2c6/-2] => [S r2c6/-2 -> r2c6/+8]<br><br>
+
+			ForceChain_Cell r6c4#8 is true<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [W r8c4/+2 -> r6c4/-2] => [S r6c4/-2 -> r6c4/+8]<br>
+			&#10047;[W r2c8/+2 -> r2c6/-2] => [S r2c6/-2 -> r6c6/+2] => [S r6c6/-8 -> r6c4/+8]</small>
+		
+			<small>1526.7.893...5...4...9.3..75.8...2.6.6.....9.9.3...4.14..5.6...6...3...573.4.1962</small><br><br><br>
+		</p>
+	</section>
+
+	<section>
+		<a id="FC_House"></a>
+		<H3 id="head_bg_Blue" >(2)ForceChain_House</H3>
+		<p>
+			In one House, focused cells having a candidate digit #a.
+			Whichever cell #a is assumed to be true,
+			when the digit #n of the linked cell B becomes true, the B cell is determined to be #n true. <br><br>
+				<img src="images/img56/img56b.png" alt="ForceChain_Cell" width="25%">
+		
+			In ForceChain_House as well as ForceChain_Cell,
+			when following the link assuming that the candidate digit#a is true,
+			some digit in the cell may lead to both true and false.
+			This is the case of (3)ForceChain_Contradiction below,
+			the first proposition "#a is true" is an error,
+			Therefore, there is no link starting with "#a is true".
+			In the GNPX implementation, this case is not included in the solution of ForceChain_House,
+			but is solved by ForceChain_Contradiction.
+
+			An sample of ForceChain_House.
+			Whichever cell (r2c48) with candidate digit #1 in row 2 is assumed to be true, r6c6 is confirmed as #2.<br>
+	
+			<img src="images/img56/img56_11.png" width="30%"  style="float:left; margin-top:8px;" alt="ForceChain_House"><br>
+			ForceChain_House(row2#1)<br><br>r6c6#2 is true<br>
+				<p style="clear: both"/>
+		
+			<small><small>
+			&#10047;[W r2c4/+1 -> r2c4/-8] => [S r2c4/-8 -> r2c6/+8] => [S r2c6/-2 -> r6c6/+2]<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [W r8c4/+2 -> r6c4/-2] => [S r6c4/-2 -> r6c6/+2]</small>
+			</small>
+				<p style="clear: both"/>
+			<small>1526.7.893...5...4...9.3..75.8...2.6.6.....9.9.3...4.14..5.6...6...3...573.4.1962</small>
+			
+			<img src="images/img56/img56_11a.png" width="30%" style="float:left; margin-top:8px;"><br>
+			ForceChain_House(row2#1)<br><br>r6c6#2 is true<br>r2c6#8 is true<br>r6c4#8 is true
+				<p style="clear: both"/>
+
+			ForceChain_House(row2#1) r6c6#2 is true<br>
+			&#10047;[W r2c4/+1 -> r2c4/-8] => [S r2c4/-8 -> r2c6/+8] => [S r2c6/-2 -> r6c6/+2]<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [W r8c4/+2 -> r6c4/-2] => [S r6c4/-2 -> r6c6/+2]<br><br>
+
+			ForceChain_House(row2#1) r2c6#8 is true<br>
+			&#10047;[W r2c4/+1 -> r2c8/-1] => [W r2c8/+2 -> r2c6/-2] => [S r2c6/-2 -> r2c6/+8]<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S (ALS:r2468c4) r2c4/-1 -> r4c4/+3] => [W r4c4/+3 -> r4c8/-3] => [S r4c8/-3 -> r7c8/+3] => [S r7c8/-7 -> r7c5/+7] => [S r7c5/-2 -> r3c5/+2] => [W r3c5/+2 -> r2c6/-2] => [S r2c6/-2 -> r2c6/+8]<br><br>
+		
+			ForceChain_House(row2#1) r6c4#8 is true<br>
+			&#10047;[W r2c4/+1 -> r2c4/-8] => [S r2c4/-8 -> r2c6/+8] => [S r2c6/-2 -> r6c6/+2] => [S r6c6/-8 -> r6c4/+8]<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [W r8c4/+2 -> r6c4/-2] => [S r6c4/-2 -> r6c4/+8]<br>
+
+				<p style="clear: both"/>
+			<small>1526.7.893...5...4...9.3..75.8...2.6.6.....9.9.3...4.14..5.6...6...3...573.4.1962</small><br><br><br>
+		</p>
+	</section>
+
+	<section>
+		<a id="FC_Null"></a>
+		<H3 id="head_bg_Blue">(3)ForceChain_Contradiction</H3>
+		<p>
+			Assuming that a cell/digit is true, it may be possible for both the true and false to lead the digit(#n) of other cell in the superlink concatenation.
+			This is a contradiction, the first assumption is incorrect.<br>
+			<img src="images/img56/img56c.png" alt="ForceChain_Null"  width="30%"><br>
+
+			<img src="images/img56/img56_12.png" width="30%"  style="float:left; margin-top:8px;" alt="ForceChain_Contradiction">
+			<br>ForceChain_Contradiction<br><br>r2c4#2 is false<br>
+				<p style="clear: both"/>
+		
+			ForceChain_Contradiction r2c4#2 is false<br>
+			&#10047;[W r2c4/+2 -> r2c8/-2] => [S (ALS:r247c8) r2c8/-2 -> r2c8/+1]<br>
+			&#10047;[W r2c4/+2 -> r8c4/-2] => [W r8c4/+7 -> r8c7/-7] => [S r8c7/-7 -> r5c7/+7] => [W r5c7/+7 -> r5c5/-7] => [W r5c5/+1 -> r3c5/-1] => [S r3c5/-1 -> r3c8/+1] => [W r3c8/+1 -> r2c8/-1]
+			<small>1526.7.893...5...4...9.3..75.8...2.6.6.....9.9.3...4.14..5.6...6...3...573.4.1962</small>
+
+			<img src="images/img56/img56_12a.png" width="30%"  style="float:left; margin-top:8px;" alt="ForceChain_Contradiction"><br><br>
+				<p style="clear: both"></p>
+			ForceChain_Contradiction<br>
+			The following cells/digits are false.<br>
+			r2c4#2, r2c6#2, r2c8#1,<br>
+			r3c5#1, r3c8#2,<br>
+			r4c4#7, r4c8#3,<br>
+			r5c4#1, r5c5#7, r5c7#7, r5c9#8,<br>
+			r6c4#2, r6c6#8,<br>
+			r7c2#8, r7c5#2, r7c8#7, r7c9#3,<br>
+			r8c2#2 is, r8c4#7, r8c7#8<br>
+				<p style="clear: both"></p>
+
+			pForceChain_Contradiction r2c4#2 is false<br>
+			&#10047;[W r2c4/+2 -> r2c8/-2] => [S (ALS:r247c8) r2c8/-2 -> r2c8/+1]<br>
+			&#10047;[W r2c4/+2 -> r8c4/-2] => [W r8c4/+7 -> r8c7/-7] => [S r8c7/-7 -> r5c7/+7] => [W r5c7/+7 -> r5c5/-7] => [W r5c5/+1 -> r3c5/-1] => [S r3c5/-1 -> r3c8/+1] => [W r3c8/+1 -> r2c8/-1]<br><br>
+			ForceChain_Contradiction r2c6#2 is false<br>
+			&#10047;[W r2c6/+2 -> r3c5/-2] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r2c6/+2 -> r2c8/-2] => [S r2c8/-2 -> r3c8/+2] => [S r3c8/-1 -> r3c5/+1] => [W r3c5/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r2c8#1 is false<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S r2c4/-1 -> r3c5/+1]<br>
+			&#10047;[W r2c8/+1 -> r2c4/-1] => [S (ALS:r268c4) r2c4/-1 -> r8c4/+7] => [W r8c4/+7 -> r8c7/-7] => [S r8c7/-7 -> r5c7/+7] => [W r5c7/+7 -> r5c5/-7] => [W r5c5/+1 -> r3c5/-1]<br><br>
+			ForceChain_Contradiction r3c5#1 is false<br>
+			&#10047;[W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r3c5/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r3c8#2 is false<br>
+			&#10047;[W r3c8/+2 -> r3c5/-2] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r3c8/+2 -> r2c8/-2] => [S (ALS:r247c8) r2c8/-2 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r4c4#7 is false<br>
+			&#10047;[W r4c4/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r4c4/+7 -> r4c8/-7] => [S r4c8/-7 -> r7c8/+7] => [W r7c8/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r4c8#3 is false<br>
+			&#10047;[W r4c8/+3 -> r4c4/-3] => [S (ALS:r2468c4) r4c4/-3 -> r2c4/+1]<br>
+			&#10047;[W r4c8/+3 -> r7c8/-3] => [W r7c8/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r5c4#1 is false<br>
+			&#10047;[W r5c4/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r5c4/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r5c5#7 is false<br>
+			&#10047;[W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r5c5/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r5c7#7 is false<br>
+			&#10047;[W r5c7/+7 -> r5c5/-7] => [W r5c5/+1 -> r3c5/-1] => [S r3c5/-1 -> r2c4/+1]<br>
+			&#10047;[W r5c7/+7 -> r4c8/-7] => [S r4c8/-7 -> r7c8/+7] => [W r7c8/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r5c9#8 is false<br>
+			&#10047;[W r5c9/+8 -> r5c7/-8] => [W r5c7/+7 -> r5c5/-7] => [W r5c5/+1 -> r3c5/-1] => [S r3c5/-1 -> r2c4/+1]<br>
+			&#10047;[W r5c9/+8 -> r5c7/-8] => [S r5c7/-8 -> r8c7/+8] => [W r8c7/+8 -> r7c9/-8] => [S (ALS:r7c589) r7c9/-8 -> r7c5/+2] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r6c4#2 is false<br>
+			&#10047;[W r6c4/+2 -> r8c4/-2] => [W r8c4/+7 -> r8c7/-7] => [S r8c7/-7 -> r5c7/+7] => [S r5c7/-8 -> r5c9/+8] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r6c4/+2 -> r6c6/-2] => [S r6c6/-2 -> r2c6/+2] => [W r2c6/+2 -> r3c5/-2] => [W r3c5/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r6c6#8 is false<br>
+			&#10047;[W r6c6/+8 -> r2c6/-8] => [W r2c6/+2 -> r3c5/-2] => [W r3c5/+1 -> r5c5/-1] => [W r5c5/+7 -> r5c7/-7] => [S r5c7/-7 -> r8c7/+7] => [W r8c7/+7 -> r8c4/-7] => [S (ALS:r268c4) r8c4/-7 -> r2c4/+1]<br>
+			&#10047;[W r6c6/+8 -> r2c6/-8] => [W r2c6/+2 -> r3c5/-2] => [W r3c5/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r7c2#8 is false<br>
+			&#10047;[W r7c2/+8 -> r7c9/-8] => [S r7c9/-8 -> r5c9/+8] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r7c2/+8 -> r7c9/-8] => [S (ALS:r7c589) r7c9/-8 -> r7c5/+2] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r7c5#2 is false<br>
+			&#10047;[W r7c5/+2 -> r7c2/-2] => [W r7c2/+8 -> r7c9/-8] => [S r7c9/-8 -> r5c9/+8] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r7c8#7 is false<br>
+			&#10047;[W r7c8/+7 -> r4c8/-7] => [S r4c8/-7 -> r4c4/+7] => [S r4c4/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r7c8/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r7c9#3 is false<br>
+			&#10047;[W r7c9/+3 -> r5c9/-3] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r7c9/+3 -> r7c8/-3] => [W r7c8/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r8c2#2 is false<br>
+			&#10047;[W r8c2/+2 -> r7c2/-2] => [W r7c2/+8 -> r7c9/-8] => [S r7c9/-8 -> r5c9/+8] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r8c2/+2 -> r7c2/-2] => [S r7c2/-2 -> r7c5/+2] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r8c4#7 is false<br>
+			&#10047;[W r8c4/+7 -> r7c5/-7] => [S (ALS:r7c259) r7c5/-7 -> r7c9/+3] => [W r7c9/+3 -> r5c9/-3] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r8c4/+7 -> r7c5/-7] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br><br>
+			ForceChain_Contradiction r8c7#8 is false<br>
+			&#10047;[W r8c7/+8 -> r5c7/-8] => [S r5c7/-8 -> r5c9/+8] => [S r5c9/-3 -> r5c4/+3] => [S r5c4/-1 -> r2c4/+1]<br>
+			&#10047;[W r8c7/+8 -> r7c9/-8] => [S (ALS:r7c589) r7c9/-8 -> r7c5/+2] => [W r7c5/+2 -> r3c5/-2] => [S r3c5/-2 -> r3c8/+2] => [S r3c8/-1 -> r2c8/+1] => [W r2c8/+1 -> r2c4/-1]<br>
+				<p style="clear: both"/>
+			<small>1526.7.893...5...4...9.3..75.8...2.6.6.....9.9.3...4.14..5.6...6...3...573.4.1962</small>
+		</p>
+	</section>
+</article>
+
+    <a href="#" class="pagetop">Top</a>
+<footer id="foot">
+	<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

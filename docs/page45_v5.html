@@ -1,0 +1,257 @@
+<head>
+	<meta charset="utf-8">
+	<title>sudoku GNPX5</title>
+
+
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" />
+	<link   rel="stylesheet" href="jq_treeview/screen.css" />
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v5_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+    
+</head>
+
+<body id="page0">
+	<header id="head"> <strong><i>Sudoku Algorithm 5</i></strong>
+		<script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+<!-- -------------------------------------------------------------------------- -->
+<article id="main">
+	<section>
+		<h3 id="head_bg_Blue">SueDeCoqEx, Franken SueDeCoq</h3>
+		<p>Define conditions for SueDeCoq in a new way,
+			and extend the SueDeCoq algorithm.</p>
+
+		<ul>
+			<li> <a href="page45.html"> SueDeCoq (原形）</a></li>
+			<li>
+				<a href="#SueDeCoqEx1"> SueDeCoqEx1 </a>&nbsp;&nbsp;
+				<a href="#SueDeCoqEx2"> SueDeCoqEx2 </a>&nbsp;&nbsp;
+				<a href="#Franken_SueDeCoqEx3"> FrankenSueDeCoqEx3 </a>
+			</li>
+			<li>
+				<a href="#Finned_SueDeCoqEx"> Finned SueDeCoqEx </a>&nbsp;&nbsp;&nbsp;
+			</li>
+			<li>
+				<a href="#Finned_sdc_exsample"> Finned SueDeCoqEx exsample </a>&nbsp;&nbsp;&nbsp;print()print()
+			</li>
+		</ul>
+
+
+
+
+		<a id="SueDeCoqEx2"></a>
+		<h3 id="head_bg_LightBlue">SueDeCoqEx2</h3>
+		<p>
+			SueDeCoq's mechanism is "Locked",
+			hich is a combination of A2LS and two ALS. The requirements for success of SueDeCoqEx are as follows.
+			<ol> [Conditions for SueDeCoqEx]
+				<li>There are A2LS and two ALS(ALS_a, ALS_b). There is no overlap between the two ALS.
+				</li>
+				<li>A2LS and ALS_a have RCC_a. A2LS and ALS_b have RCC_b. |RCC_a|>=2, |RCC_b|>=2.</li>
+				<li>There is no overlap between RCC-a and RCC-b.</li>
+				<li>|A2LS digits| - 2 = |A2LS cells|</li>
+			</ol>
+
+			The formula condition represents the following:<br>
+			Since A2LS and ALS_a are connected by two or more RCCs, ALS_a always has one RCC digit.
+			So A2LS has the remaining digits. The same goes for A2LS and ALS_b.<br>
+			Then, the number of digits left in A2LS will match the number of cells. This means A2LS becomes "Locked".
+			<br><br>
+			<img src="images/img45_v5/image45_SueDoq_Logic2.png" width="50%" alt="SueDeCoqEx2"><br><br>
+			As seen in [SueDeCoqEx conditions], A2LS and ALS do not have row/column/block conditions.
+			The only condition is that they are connected using RCC.<br>
+		</p>
+		<img src="images/img45_v5/image45V5_sdcEx1.png" width="20%" style="float:left;  margin-right:8px;" alt="SueDeCoqEx2">
+		<strong>SueDeCoqEx</strong><br>
+		stem AnLS : r45c78 #145789<br>
+			1st ALS : r5c59 #189  RCC;#19<br>
+			2nd ALS : r68c8 #358  RCC;#58<br>
+			exclude : r4c9#9 r6c7#9 r6c9#9 r7c8#35<br>
+		<p style="clear: both" ></p><br>
+
+		<img src="images/img45_v5/image45V5_sdcEx2.png" width="20%" style="float:left;  margin-right:8px;" alt="SueDeCoqEx2">
+		<strong>SueDeCoqEx</strong><br>
+			stem AnLS : r56c2 #1235<br>
+			1st ALS : r7c2 r8c1 r9c12 #12345  RCC;#15<br>
+			2nd ALS : r6c1368 #23579  RCC;#23<br>
+			exclude : r5c1#4 r7c1#4 r7c3#4 r8c3#4 r8c9#4<br>
+		<p style="clear: both" ></p><br>
+
+		<img src="images/img45_v5/image45V5_sdcEx3.png" width="20%" style="float:left;  margin-right:8px;" alt="SueDeCoqEx2">
+		<strong>SueDeCoqEx</strong><br>
+			stem AnLS : r7c23456 #1245689<br>
+			1st ALS : r7c9 #24  RCC;#24<br>
+			2nd ALS : r5c2 r6c3 #159  RCC;#19<br>
+			exclude: r4c3#9 r7c1#24<br>
+		<p style="clear: both" ></p><br>
+			
+		<img src="images/img45_v5/image45V5_sdcEx4.png" width="20%" style="float:left;  margin-right:8px;" alt="SueDeCoqEx2">
+		<strong>SueDeCoqEx</strong><br>
+			stem AnLS : r56c8 #1589<br>
+			1st ALS : r7c8 #18  RCC;#18<br>
+			2nd ALS : r467c9 #1259  RCC;#59<br>
+			exclude: r5c7#9 r8c8#8 r8c9#2 r9c9#2<br>
+		<p style="clear: both" ></p><br>
+
+		<p class="newLine"></p>
+		<small>
+		3248615976579438219185273642.143....5.32.6...4..7.....1..6.....8..1746..7..39..1.<br>
+		641..8329873291645592..4187.8..2.4.1.....92.3...41.8.6......73..6.9..51...714.968<br>
+		82..6.....6.8...2...32..568641...37.53......4.87...6..4563.97..37...1.......5..3.</small><br>
+		(using "HoDoKu" Puzzle.）
+	</p>
+
+
+		<a id="Franken_SueDeCoqEx3"></a>
+		<h3 id="head_bg_LightBlue">Franken SueDeCoq</h3>
+		<p>
+			"SueDeCoqEx" extends further with a natural extension.
+			Suppose that A3LS is connected to three disjoint ALS (ALS_a, ALS_b, ALS_c) using RCC.
+			Let's call this <strong>"Franken SueDeCoqEx"</strong>.
+			<ol>  [Franken SueDeCoq conditions]
+				<li>There are A2LS and three ALS(ALS_a, ALS_b, ALS_c). There is no overlap between the three ALS.
+					(The "overlapping" condition may be removed...> v5.1)
+				</li>
+				<li>A2LS and ALS_a have RCC_a. A2LS and ALS_b have RCC_b. A2LS and ALS_c have RCC_c.
+					|RCC_a|>=2, |RCC_b|>=2, |RCC_c|>=2.</li>
+				<li>There is no overlap between RCC-a, RCC-b and RCC-c.</li>
+				<li>|A3LS digits| - 3 = |A3LS cells|</li>
+			</ol>
+			<img src="images/img45_v5/image45_SueDoq_Logic3.png" width="50%" alt="SueDeCoqEx2">><br><br>
+			The mechanism for establishing Franken SueDeCoq is the same as SueDeCoqEx.<br><br>
+			<img src="images/img45_v5/image45V5_sdcEx10.png" width="20%" style="float:left;  margin-right:8px;" alt="Franken SueDeCoqEx3" >
+			<strong>Franken SueDeCoqEx3</strong><br>
+			stem AnLS : r7c79 r89c9 #2345789<br>
+			1st ALS : r9c7 #24  RCC;#24<br>
+			2nd ALS : r8c8 #35  RCC;#35<br>
+			3rd ALS : r4c7 r5c9 #35  RCC;#78<br>
+			exclude : r5c7#4 r7c8#345<br>
+			<p style="clear: both" ><br>
+
+			<img src="images/img45_v5/image45V5_sdcEx11.png" width="20%"  style="float:left;  margin-right:8px;" alt="Franken SueDeCoqEx3" >
+			<strong>Franken SueDeCoq3</strong><br>
+			stem AnLS : r7c23 r8c1 r9c2 #1234589<br>
+			1st ALS : r9c1 #23  RCC;#23<br>
+			2nd ALS : r8c3 #48  RCC;#48<br>
+			3rd ALS : r46c3 r5c2 #48  RCC;#19<br>
+			exclude: r7c1#24 <br>
+			<p style="clear: both" >
+
+		<p class="newLine"><small>
+		3248615976579438219185273642.143....5.32.6...4..7.....1..6.....8..1746..7..39..1.<br>
+		641..8329873291645592..4187.8..2.4.1.....92.3...41.8.6......73..6.9..51...714.968</small><br>
+		(using "HoDoKu" Puzzle.）</p>
+		</p>
+		<br><br>
+
+
+
+		<a id="SueDeCoqEx1"></a>
+		<h3 id="head_bg_LightBlue">SueDeCoqEx1</h3>
+		<p>
+			"SueDeCoqEx" can also be reduced. This is called<strong>"SueDeCoqEx0"</strong>.<br>
+			Since ALS and ALS are linked by two RCCs, this is<strong>"ALS-XZ doubly linked"</strong>.<br>
+			This shows the relationship between ALS-XZ and SueDeCoq.<br><br>
+			<img src="images/img45_v5/image45_SueDoq_Logic1.png" width="50%" ><br><br>
+			<img src="images/img45_v5/image45V5_sdcEx20.png" width="20%"  style="float:left;  margin-right:8px;" alt="SueDeCoqEx1" >
+			<strong>SueDeCoqEx1</strong><br>
+				stem AnLS : r79c9 r8c89 #23589<br>
+				1st ALS : r5c9 #89  RCC;#89<br>
+				exclude: r4c9#89 r6c9#89<br>
+			<p style="clear: both" ><br>
+
+			<img src="images/img45_v5/image45V5_sdcEx21.png" width="20%"  style="float:left;  margin-right:8px;" alt="SueDeCoqEx1" >
+			<strong>SueDeCoqEx1</strong><br>
+				stem AnLS : r57c2 #125<br>
+				1st ALS : r8c1 r9c12 #2345  RCC;#25<br>
+				exclude: r5c1#4 r6c2#5 r7c1#24 r7c3#4 r8c3#4 r8c9#4<br>
+			<p style="clear: both" >
+		<p class="newLine"><small>
+		3248615976579438219185273642.143....5.32.6...4..7.....1..6.....8..1746..7..39..1.<br>
+		641..8329873291645592..4187.8..2.4.1.....92.3...41.8.6......73..6.9..51...714.968</small><br>
+		(using "HoDoKu" Puzzle.）</p></p></p>
+
+
+
+		<a id="Finned_SueDeCoqEx"></a>
+		<h3 id="head_bg_LightBlue"> Finned SueDeCoqEx</h3>
+		<p>
+			Just as Fish has Fish with Fin, SueDeCoq also has SueDeCoq with Fin. <br>
+			Fish with Fin is a pattern with Fin added to BaseSet. When CoverSet is in a position that covers BaseSet and Fin at the same time
+			It becomes Locked.<br><br>
+
+			SueDeCoq connects AnLS and ALS with two RCCs each,<br>
+			&nbsp;&nbsp;&nbsp;<storong>|Number of digits in AnLS| - n = |Number of cells in AnLS|</storong><br>
+			This is a pattern that holds true.<br>
+			(There are other conditions such as no overlapping of digit elements.)<br>
+
+			Finned SueDeCoq is a case where the digit arrangement pattern of ALS is inconsistent with AnLS.<br>
+			Below is an example of Finned SueDeCoq(n=1,2,3).<br>
+			<img src="images/img45_v5/image45_sdcEx_10.png" width="90%" alt="Finned SueDeCoqEx" ><br><br>
+
+			Fin is an element that could not become RCC. <br>
+			If Fin is negatively determined by an element external to AnLS and ALS,
+			ALS becomes a LockedSet, Finned SueDeCoq will be Locked.。<br><br>
+			<img src="images/img45_v5/image45_sdcEx_11.png" width="25%" ><br><br>
+
+			Finned SueDeCoq(n=1) matches ALS-XZ's singlylinked.<br>
+			<img src="images/img45_v5/image45_sdcEx_12.png" width="60%" ><br><br>
+
+
+			<a id="Finned_sdc_exsample"></a>
+			<h3 id="head_bg_LightBlue"> Finned SueDeCoq exsample</h3><br>
+			<img src="images/img45_v5/imagee45v5_fsdcEx30.png" width="20%"  style="float:left;  margin-right:8px;" alt="Finned SueDeCoqEx2" >
+			<strong>Finned SueDeCoqEx1</strong><br>
+				stem AnLS : r57c5 #158<br>
+				1nd ALS : r4c78 r5c789 #145789  RCC;#1<br>
+				exclude: r7c8#5<br>
+			<p style="clear: both" ><br>
+
+			<img src="images/img45_v5/imagee45v5_fsdcEx31.png" width="20%"  style="float:left;  margin-right:8px;" alt="Finned SueDeCoqEx2" >
+				<strong>Finned SueDeCoqEx2</strong><br>
+				stem AnLS : r789c9 #23589<br>
+				1st ALS : r8c8 #35  RCC;#35<br>
+				2nd ALS : r4c7 r5c9 #789  RCC#8<br>
+				exclude: r4c9#9 r6c9#9<br>
+			<p style="clear: both" ><br>
+
+				<img src="images/img45_v5/imagee45v5_fsdcEx32.png" width="20%"  style="float:left;  margin-right:8px;" alt="Finned Franken_SueDeCoqEx3" >
+				<strong>Finned Franken_SDCEx3</strong><br>
+				stem AnLS : r467c2 #346789<br>
+				1st ALS : r8c2 #39  RCC;#39<br>
+				2nd ALS : r9c2 #46  RCC;#46<br>
+				3rd ALS : r4c7 r5c9 #789  RCC:#7<br>
+				exclude: r5c2#8
+				<p style="clear: both" >
+		<p class="newLine"><small>
+			3248615976579438219185273642.143....5.32.6...4..7.....1..6.....8..1746..7..39..1.<br>
+			641..8329873291645592..4187.8..2.4.1.....92.3...41.8.6......73..6.9..51...714.968</small><br>
+			(using "HoDoKu" Puzzle.）</p><br><br>
+	</section>
+</article>
+
+		<a href="#" class="pagetop">Top</a>
+<footer id="foot">
+		<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+	</footer>
+
+</body>
+
+</html>

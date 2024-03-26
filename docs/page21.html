@@ -55,10 +55,10 @@
 			and the value is 0 to 8. This value is determined when the cell is created.
 			it is set in the constructor and has the readonly attribute.<br><br></li>
 			
-			<li>no is a problem of Sudoku or solved digit. Digits set as problems are 1 to 9,
+			<li>no is a puzzle of Sudoku or solved digit. Digits set as puzzles are 1 to 9,
 			The solved digit is -1 to -9, and the cell which has not yet been solved is 0.<br><br></li>
 			
-			<li>FreeB is a bit representation of possible candidate digits for that cell in the process of solving the problem.
+			<li>FreeB is a bit representation of possible candidate digits for that cell in the process of solving the puzzle.
 			For example, when there are 1, 4, and 6 as candidates in a certain cell, the value is <br>
 			1&lt;&lt;(1-1) | 1&lt;&lt;(4-1) |1&lt;&lt;(6-1) = 1+8+32 = 41.<br><br></li>
 

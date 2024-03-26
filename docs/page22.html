@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Sudoku C# Problem class(UProblem)</title>
+	<title>Sudoku C# Puzzle class(UPuzzle)</title>
 	<!-- Prism   https://prismjs.com/download.html -->
 	<script src="prism_js_css/prism.js"></script>
 	<link rel="stylesheet" href="prism_js_css/prism.css">
@@ -37,10 +37,10 @@
 <!-- -------------------------------------------------------------------------- -->
     <article id="main">
         <section>
-            <a id="UProblem"></a>
-            <h3 id="head_bg_Blue">Problem class(UProblem)</h2>
+            <a id="UPuzzle"></a>
+            <h3 id="head_bg_Blue">Puzzle class(UPuzzle)</h2>
             <ul>
-                <li>"DifficultyLevel" is the difficulty of the problem. This is not the difficulty of human solving.
+                <li>"DifficultyLevel" is the difficulty of the puzzle. This is not the difficulty of human solving.
                     With the following analysis algorithms, it is easy to examine by program,
                     but there are many ways that humans find it extremely difficult to discover.
                     It was decided appropriately (subjectively appropriateness). In addition, it is up to level 1, 2, 3, 4 to solve manually.
@@ -49,13 +49,13 @@
                 <li>"Insoluble" is a logical variable with two or more solutions,
                     which is true when there is contradiction and no solution exists at all.</li><br><br>
                 
-                <li>"BDL" is a List of 81 cells representing problems. Although it can be used as an array, 
+                <li>"BDL" is a List of 81 cells representing puzzles. Although it can be used as an array, 
                     i adopted this because i want to use various functions of the List collection. </li><br><br>
             </ul>
 
 
             <pre class="line-numbers" class="prismOp" >
-<code class="language-cs">public class UProblem{public class UProblem{
+<code class="language-cs">public class UPuzzle{public class UPuzzle{
     public int         IDm;
     public int         ID;
     public List&lt;UCell&gt; BDL;
@@ -77,21 +77,21 @@
     public string     extRes{ get; set; }
     public int        SolCode;
 
-    public UProblem( ){
+    public UPuzzle( ){
         ID=-1;
         BDL = new List&lt;UCell&gt;();
         for( int rc=0; rc&lt;81; rc++ ) BDL.Add(new UCell(rc));
         this.DifLevel = 0;
         HTicks=DateTime.Now.Ticks;
     }
-    public UProblem( string Name ): this(){ this.Name=Name; }
+    public UPuzzle( string Name ): this(){ this.Name=Name; }
 
-    public UProblem( List&lt;UCell&gt; BDL ){
+    public UPuzzle( List&lt;UCell&gt; BDL ){
         this.BDL      = BDL;
         this.DifLevel = 0;
         HTicks=DateTime.Now.Ticks;
     }
-    public UProblem( int ID, List&lt;UCell&gt; BDL, string Name="", int DifLvl=0, string TimeStamp="" ){
+    public UPuzzle( int ID, List&lt;UCell&gt; BDL, string Name="", int DifLvl=0, string TimeStamp="" ){
         this.ID       = ID;
         this.BDL      = BDL;
         this.Name     = Name;
@@ -100,8 +100,8 @@
         HTicks=DateTime.Now.Ticks;
     }
 
-    public UProblem Copy( int stageNo, int IDm ){
-        UProblem P = (UProblem)this.MemberwiseClone();
+    public UPuzzle Copy( int stageNo, int IDm ){
+        UPuzzle P = (UPuzzle)this.MemberwiseClone();
         P.BDL = new List&lt;UCell&gt;();
         foreach( var q in BDL ) P.BDL.Add(q.Copy());
         P.HTicks=DateTime.Now.Ticks;;
@@ -134,7 +134,7 @@
         </section>
 	</article>
 
-	    <a href="#" class="pagetop">Top</a>
+        <a href="#" class="pagetop">Top</a>
 <footer id="foot">
 		<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
 	</footer>

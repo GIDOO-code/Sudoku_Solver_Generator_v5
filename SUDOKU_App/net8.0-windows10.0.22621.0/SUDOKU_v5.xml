@@ -307,7 +307,7 @@
         </member>
         <member name="P:GNPXcore.Properties.Resources.fldSuDoKuImages">
             <summary>
-              SuDoKu Images に類似しているローカライズされた文字列を検索します。
+              SuDoKu_Images に類似しているローカライズされた文字列を検索します。
             </summary>
         </member>
         <member name="P:GNPXcore.Properties.Resources.gbxMSearchCondition">

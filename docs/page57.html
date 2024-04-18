@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>数独 SubsetExclude</title>
+	
+    <!-- Prism   https://prismjs.com/download.html -->
+	<script src="prism_js_css/prism.js"></script>
+	<link rel="stylesheet" href="prism_js_css/prism.css">
+
+
+	<!-- jQuery treeview ! -->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="jq_treeview/jquery.cookie.js"></script>
+	<script src="jq_treeview/jquery.treeview.js"></script>
+	<link   rel="stylesheet" href="jq_treeview/jquery.treeview.css" >
+	<link   rel="stylesheet" href="jq_treeview/screen.css" >
+	<script type="text/javascript" src="jq_treeview/cssFunction.js"></script>
+
+
+	<link rel="stylesheet" href='css/style_v4_HeaderFooter.css'>
+	<link rel="stylesheet" href="css/style_v5A_Standard.css">
+	<link rel="stylesheet" href='css/gotoTop.css'>
+
+	<script type="text/javascript" src="js/naviHeader.js"> </script>
+	<script type="text/javascript" src="js/naviAlgorithm.js"> </script>
+</head>
+
+
+<body id="page">
+	<header id="head"> <strong><i>Sudoku Algorithm 4</i></strong>
+        <script type="text/javascript"> writeNaviHeader(); </script>
+	</header>
+
+    <section id="menuList">
+        <script type="text/javascript"> writeNaviAlgorithm(); </script>	
+    </section>
+
+
+
+	<!-- -------------------------------------------------------------------------- -->
+
+	<article id="main">
+		<section><br>
+			<h4>[GNPX v5.1]</h4>
+
+			<H3 id="head_bg_Blue">Subset Exclusion  Subset Exclusion_ALS</H3>
+			<p>
+				In the analysis algorithm of SubsetExclusion,
+				<a href="page13.html">House,</a>
+				<a href="page26.html">ALS,</a>
+				Use <a href="page26.html#RCC">RCC,</a>.
+			</p>
+
+			<h3 id="head_bg_LightBlue">How SubsetExclusion works</h3>
+			<p>
+				<ol>
+					<li>
+						Focus on 2-3 cells on the board. Let's call these Stems (Stem is borrowed from DeathBloosom).
+						Cells may or may not belong to the same House.
+						If it does, it will be an Aligned Pair/Triple exclusion algorithm.
+						When solving with a program, there is almost no difference, 
+						Therefore, "subset exclusion" is used without distinguishing between these.<br>
+						<img src="images/img57/image57_Subset_10.png" width="76%" alt="Force Algorithm"><br><br>
+					</li>
+					<li>
+						On the board, focus on the "cell with two element elements" that belongs to the same House as the Stem, and call this "Leaf".
+						As shown in the figure on the right, even if the Stem does not belong to the same House,
+						it is assumed that each cell of the Stem belongs to the same House.
+						Leaf is connected to Stem.<br>
+						In this state, Stem will never become [b,d]. There are no more Leaf candidates.
+						Leaf is connected to Stem.<br>
+						<img src="images/img57/image57_Subset_11.png" width="50%" alt="Force Algorithm"><br><br>
+					</li>
+					<li>
+						Generate a <strong> list</strong> of candidate digit combinations for Stem. In the case shown above, there are 6 pairs. <br><br>
+						<u>&nbsp;Candidate digit list: [a,a],[a,c],[a,d], [b,a],[b,c],[b,d]</u><br ><br>
+						<ol style="padding-left: 10px" type="i">
+							<li>If the Stem cells belong to the same House,
+								pairs of the same digit can be excluded from the list ([a,a] in the above figure). </li>
+							<li>Excluded from the list by Leaf. In the example case,
+								[b,d] can be excluded from the list due to the Leaf digit set. <br>
+								This process is applied to all leaves on the board.</li>
+						</ol><br>
+					</li>
+					<li>When the possibility of a certain digit is eliminated by evaluating the list of Stem candidate digit, 
+						it is determined negatively from the Stem candidate digit.
+					</li><br>
+
+					<li>
+						The situation is similar for 3-cell Stem. <br>
+						In the case of a 3-cell stem and a 2-digit Leaf, all patterns that include the 2-digit Leaf can be excluded from the list. <br>
+						For example, when the digit of Leaf is [a,b], [a,b,x],[x,a,b],[a,x,b] in the list can be excluded.
+						Similarly, you can exclude candidates in the list that no longer hold Leaf. <br>
+						In terms of program code, when the RCC and Leaf elements (of Stem and Leaf) match,
+						they can be excluded from the list of candidate digit combinations for Stem.<br><br>
+						<img src="images/img57/image57_Subset_12.png" width="30%" alt="Force Algorithm"><br><br>
+					</li>
+					<li>
+						ALS will also be LEAF<strong></strong>[SubsetExclusion_ALS]</strong>. 
+						RCC between Stem and ALS eliminates candidates from the list.<br><br></li>
+					<li>
+						(Summary) SubsetExclusion can be extended in the following way.
+						<ol style="padding-left: 10px" type="i">
+							<li>SubsetExclusion holds true even if Stem is a Subset. </li>
+							<li>RCC can also be defined between Subset (Stem) and ALS (Leaf). 
+								RCC allows you to exclude candidates from the list. </li>
+							<li>Leaf ALS is valid even if there is overlap with each other</li>
+						</ol>
+					</li>
+				</ol>
+			</p><br><br><br>
+
+			<h3 id="head_bg_LightBlue">SubsetExclusion sample</h3>
+
+			<p>
+				Stem is also an example of Subset, SubsetExclusion, and SubsetExclusio_ALS (same situation). <br>
+				In the third sample, the cells with orange dots in the upper left are areas where ALS overlaps.
+			</p>
+            <p>
+                <img src="images/img57/image57_Subset_20.png" width="30%" style="float:left;  margin-right:8px;" alt="SubSetExclusion">
+                <strong>SubsetExclusion<br></strong>
+				Stem: r7c36 #23457<br>
+				Leaf: Cell r7c8 #23<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell r7c4 #27<br>
+				<p class="newLine"></p>81..7.69.4.639851.5.9.2.4.87.8..9....9..3..8....8..9.41...6.8.9.8..4.765.67.8..4.</p>
+            </p>
+			<p>
+                <img src="images/img57/image57_Subset_21.png" width="30%" style="float:left;  margin-right:8px;" alt="SubSetExclusion">
+				<strong>SubsetExclusion_with_ALS</strong><br>
+				Stem: r3c2 r7c3 #23457<br>
+				Leaf: Cell r1c3 #23<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALS r37c8 #237 RCC#27<br>
+				<p class="newLine"></p>81..7.69.4.639851.5.9.2.4.87.8..9....9..3..8....8..9.41...6.8.9.8..4.765.67.8..4.</p>
+            </p>
+			<p>
+                <img src="images/img57/image57_Subset_22.png" width="30%" style="float:left;  margin-right:8px;" alt="SubSetExclusion">
+				<strong>SubsetExclusion_with_ALS(overlap)</strong><br>
+					Stem: r4c45 r6c8 #1234567<br>
+					Leaf: Cell r6c5 #15<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell r4c7 #123<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell r4c9 #136<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell r4c8 #235<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALS r4c79 r5c7 #1236 RCC#36<br>
+				<p class="newLine"></p>81..7.69.4.639851.5.9.2.4.87.8..9....9..3..8....8..9.41...6.8.9.8..4.765.67.8..4.</p>
+            </p>
+		</section>
+	</article>
+
+    <a href="#" class="pagetop">Top</a>
+	<footer id="foot">
+		<p id="copyright">Copyright &copy; 2014- GNPX. All rights reserved.</p>
+	</footer>
+
+</body>
+</html>

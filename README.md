@@ -1,7 +1,6 @@
 # Sudoku_Solver_Generator_v5.0
  Has been uploaded (20240418).<br>
 
-Under maintenance.
 # Code distribution restart. The GNPXv5 project has been compressed.
 
 

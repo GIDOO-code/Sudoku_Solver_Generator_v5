@@ -4,16 +4,6 @@
         <name>SUDOKU_v5</name>
     </assembly>
     <members>
-        <member name="T:GIDOO_space.NumericUpDown">
-            <summary>
-            NumericUpDown
-            </summary>
-        </member>
-        <member name="M:GIDOO_space.NumericUpDown.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:GNPXcore.NuPz_Win">
             <summary>
             NuPz_Win
@@ -40,6 +30,16 @@
             </summary>
         </member>
         <member name="M:GNPXcore.DevelopWin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:GNPXcore.StatisticsWin">
+            <summary>
+            StatisticsWin
+            </summary>
+        </member>
+        <member name="M:GNPXcore.StatisticsWin.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -693,6 +693,16 @@
         <member name="P:GNPXcore.Properties.Resources.tabManual">
             <summary>
               Manual に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="T:GIDOO_space.NumericUpDown">
+            <summary>
+            NumericUpDown
+            </summary>
+        </member>
+        <member name="M:GIDOO_space.NumericUpDown.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="T:WPFColorPickerLib.ColorDialog">

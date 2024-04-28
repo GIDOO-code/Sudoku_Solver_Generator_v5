@@ -9,18 +9,18 @@ LockedSet(3D)
 LockedSet(3D)Hidden
 LockedSet(4D)
 LockedSet(4D)Hidden
--LockedSet(5D)
--LockedSet(5D)Hidden
--LockedSet(6D)
--LockedSet(6D)Hidden
--LockedSet(7D)
--LockedSet(7D)Hidden
+LockedSet(5D)
+LockedSet(5D)Hidden
+LockedSet(6D)
+LockedSet(6D)Hidden
+LockedSet(7D)
+LockedSet(7D)Hidden
 XWing
 SwordFish
 JellyFish
--Squirmbag
--Whale
--Leviathan
+Squirmbag
+Whale
+Leviathan
 Finned XWing
 Finned SwordFish
 Finned JellyFish
@@ -57,20 +57,20 @@ ALS-XY-Wing
 eALS-ChainA
 ALS-DeathBlossom
 ALS-DeathBlossomEx
--eNW_DeathBlossom
+eNW_DeathBlossom
 eNetwork_NiceLoop
 eNetwork_NiceLoopEx
--eNetwork_FC_Cells
--eNetwork_FC_House
--eALS_Wing_2D
--eALS_Wing_3D
--eALS_Wing_4D
--EndoFinned F/M Fish
--Finned EndoFinned F/M Fish
--Cannibalistic F/M Fish
--FinnedCannibalistic F/M Fish
--eKrakenFish
--eKrakenFinnedFish
+eNetwork_FC_Cells
+eNetwork_FC_House
+eALS_Wing_2D
+eALS_Wing_3D
+eALS_Wing_4D
+EndoFinned F/M Fish
+Finned EndoFinned F/M Fish
+Cannibalistic F/M Fish
+FinnedCannibalistic F/M Fish
+eKrakenFish
+eKrakenFinnedFish
 *MSlvrMaxLevel 10
 *MSlvrMaxAlgorithm 100
 *MSlvrMaxAllAlgorithm 400

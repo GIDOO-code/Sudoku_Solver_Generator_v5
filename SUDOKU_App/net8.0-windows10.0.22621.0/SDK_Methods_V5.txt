@@ -1,7 +1,7 @@
 ﻿LastDigit
 NakedSingle
 HiddenSingle
--GeneralLogic
+GeneralLogic
 LockedCandidate
 LockedSet(2D)
 LockedSet(2D)Hidden
@@ -25,58 +25,59 @@ Finned XWing
 Finned SwordFish
 Finned JellyFish
 Finned Squirmbag
-Finned Whale
+Finned hale
 Finned Leviathan
-Franken/MutantFish
+Franken/Mutant Fish
 Finned Franken/Mutant Fish
 Skyscraper
 EmptyRectangleEx
-XY-Wing
-W-Wing
+XY Wing
+W Wing
 RemotePair
 XChain
 XYChain
+Color Trap
+Color Wrap
+MultiColor Type1
+MultiColor Type2
 SueDeCoq
 SueDeCoqEx1
 SueDeCoqEx2
-Franken_SDCEx3
-FinnedSueDeCoqEx1
-FinnedSueDeCoqEx2
-Finned_Franken_SDCEx3
-Color-Trap
-Color-Wrap
-MultiColor-Type1
-MultiColor-Type2
-XYZ-Wing
-WXYZ-Wing
-VWXYZ-Wing
-UVWXYZ-Wing
-XYZ-WingALS
-ALS-XZ
-ALS-XY-Wing
-eALS_Wing_2D
-eALS_Wing_3D
-eALS_Wing_4D
-eALS-ChainA
-ALS-DeathBlossom
-ALS-DeathBlossomEx
+Franken SDCEx3
+Finned SueDeCoqEx1
+Finned SueDeCoqEx2
+Finned Franken_SDCEx3
+XYZ Wing
+WXYZ Wing
+VWXYZ Wing
+UVWXYZ Wing
+XYZ WingALS
+ALS XZ
+ALS XY Wing
+eALS ChainA
+ALS DeathBlossom
+ALS DeathBlossomEx
 eNW_DeathBlossom
-eNetwork_NiceLoop
-eNetwork_NiceLoopEx
+eNetwork NiceLoop
+eNetwork NiceLoopEx
+eNetwork FC_Cells
+eNetwork FC_House
+eALS Wing 2D
+eALS Wing 3D
+eALS Wing 4D
 EndoFinned F/M Fish
 Finned EndoFinned F/M Fish
-Cannibalistic F/M Fish
-FinnedCannibalistic F/M Fish
+CannibalisticF/M Fish
+Finned Cannibalistic_F/M Fish
 eKrakenFish
-eKrakenFinnedFish
-eNetwork_FC_Cells
-eNetwork_FC_House
+Finned eKrakenFish
+*RandomSeed 0
 *MSlvrMaxLevel 10
 *MSlvrMaxAlgorithm 100
 *MSlvrMaxAllAlgorithm 400
-*MSlvrMaxTime 1200
+*MSlvrMaxTime 120
 *RecommendLevel 20
-*StartTime 2024/03/18 0:00:00
+*StartTime 2024/05/10 19:26:34
 *NiceLoopMax 10
 *ALSSizeMax 5
 *ALSChainSizeMax 5

@@ -355,11 +355,6 @@
               Count に類似しているローカライズされた文字列を検索します。
             </summary>
         </member>
-        <member name="P:GNPXcore.Properties.Resources.lblBasicPattern">
-            <summary>
-              Basic Pattern: に類似しているローカライズされた文字列を検索します。
-            </summary>
-        </member>
         <member name="P:GNPXcore.Properties.Resources.lblCellsPuzzle">
             <summary>
               Puzzle に類似しているローカライズされた文字列を検索します。
@@ -523,6 +518,11 @@
         <member name="P:GNPXcore.Properties.Resources.lblPuzzleLevel">
             <summary>
               Puzzle Level: に類似しているローカライズされた文字列を検索します。
+            </summary>
+        </member>
+        <member name="P:GNPXcore.Properties.Resources.lblPuzzlePattern">
+            <summary>
+              Puzzle Pattern: に類似しているローカライズされた文字列を検索します。
             </summary>
         </member>
         <member name="P:GNPXcore.Properties.Resources.lblRandomNumberSeed">

@@ -1,6 +1,0 @@
-﻿
----2024/05/11 11:21:26
-Index was outside the bounds of the array.   at GNPXcore.eNetwork_Man.QSearch_Network_RadialType(ULogical_Node ULGstart000, Int32 rcBreak, Int32 extLink, UInt128 rcProhibit, Boolean debugPrintB) in E:\◆◆数独集合体\■■ ■■■GNPXv5.2project\GNPX v5_0510 Github公開用\GNPX v5 0510\SUDOKUcore\5 GNPX_analyzer\58 eNetwork_base\587 eNetwork_Man_QSearch_Radial.cs:line 111
-   at GNPXcore.eNetwork_App.eNW_DeathBlossom_Collective(Int32 solverCode) in E:\◆◆数独集合体\■■ ■■■GNPXv5.2project\GNPX v5_0510 Github公開用\GNPX v5 0510\SUDOKUcore\5 GNPX_analyzer\59 eNetwork_App\593 eNetwork_App_eDeathBlossom_Ext3.cs:line 62
-   at GNPXcore.eNetwork_App.eNW_DeathBlossom() in E:\◆◆数独集合体\■■ ■■■GNPXv5.2project\GNPX v5_0510 Github公開用\GNPX v5 0510\SUDOKUcore\5 GNPX_analyzer\59 eNetwork_App\593 eNetwork_App_eDeathBlossom_Ext3.cs:line 31
-   at GNPXcore.GNPZ_Engin.sudoku_Solver_SingleStage(CancellationToken ct, Boolean SolInfoB) in E:\◆◆数独集合体\■■ ■■■GNPXv5.2project\GNPX v5_0510 Github公開用\GNPX v5 0510\SUDOKUcore\3 SuDoKu Analyzer sub\30 GNPX_Control_Engin\301 GNPZ_SolveEngin.cs:line 384

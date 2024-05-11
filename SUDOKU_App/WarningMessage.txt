@@ -1,1 +1,0 @@
-﻿*** Redundant Solution Found in SnapSaveGP...  not unique solution : eGeneralLogic size:3 rank:0   BaseSet: #7 #7 #9  CoverSet: #7 #7 #9  Eliminate: r7c46 #9

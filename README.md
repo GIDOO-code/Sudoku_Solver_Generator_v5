@@ -26,6 +26,6 @@
   (5) SueDeCoq family, SueDeCoq's new algorithm( SueDeCoqEx, Franken SueDeCoq, Finned SueDeCoq )<br>
   (6) DeathBlossom algorithm consideration<br>
 
-## 3. GNPX v5 プログラム<br>
+## 3. GNPX v5 Program<br>
   (1) Improved many analysis algorithms<br>
   (2) Bit representation (change Bit81 to UInt128)<br>

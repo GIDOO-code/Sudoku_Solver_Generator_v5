@@ -62,16 +62,16 @@
 			SueDeCoq's mechanism is "Locked",
 			hich is a combination of A2LS and two ALS. The requirements for success of SueDeCoqEx are as follows.
 			<ol> [Conditions for SueDeCoqEx]
-				<li>There are A2LS and two ALS(ALS_a, ALS_b). There is no overlap between the two ALS.
+				<li>There are A2LS and two ALS(ALS_1, ALS_2). There is no overlap between the two ALS.
 				</li>
-				<li>A2LS and ALS_a have RCC_a. A2LS and ALS_b have RCC_b. |RCC_a|>=2, |RCC_b|>=2.</li>
+				<li>A2LS and ALS_1 have RCC_1. A2LS and ALS_2 have RCC_2. |RCC_1|>=2, |RCC_2|>=2.</li>
 				<li>There is no overlap between RCC-a and RCC-b.</li>
 				<li>|A2LS digits| - 2 = |A2LS cells|</li>
 			</ol>
 
 			The formula condition represents the following:<br>
-			Since A2LS and ALS_a are connected by two or more RCCs, ALS_a always has one RCC digit.
-			So A2LS has the remaining digits. The same goes for A2LS and ALS_b.<br>
+			Since A2LS and ALS_1 are connected by two or more RCCs, ALS_1 always has one RCC digit.
+			So A2LS has the remaining digits. The same goes for A2LS and ALS_2.<br>
 			Then, the number of digits left in A2LS will match the number of cells. This means A2LS becomes "Locked".
 			<br><br>
 			<img src="images/img45_v5/image45_SueDoq_Logic2.png" width="50%" alt="SueDeCoqEx2"><br><br>
@@ -123,14 +123,14 @@
 		<h3 id="head_bg_LightBlue">Franken SueDeCoq</h3>
 		<p>
 			"SueDeCoqEx" extends further with a natural extension.
-			Suppose that A3LS is connected to three disjoint ALS (ALS_a, ALS_b, ALS_c) using RCC.
+			Suppose that A3LS is connected to three disjoint ALS (ALS_1, ALS_2, ALS_3) using RCC.
 			Let's call this <strong>"Franken SueDeCoqEx"</strong>.
 			<ol>  [Franken SueDeCoq conditions]
-				<li>There are A2LS and three ALS(ALS_a, ALS_b, ALS_c). There is no overlap between the three ALS.
+				<li>There are A2LS and three ALS(ALS_1, ALS_2, ALS_3). There is no overlap between the three ALS.
 					(The "overlapping" condition may be removed...> v5.1)
 				</li>
-				<li>A2LS and ALS_a have RCC_a. A2LS and ALS_b have RCC_b. A2LS and ALS_c have RCC_c.
-					|RCC_a|>=2, |RCC_b|>=2, |RCC_c|>=2.</li>
+				<li>A2LS and ALS_1 have RCC_1. A2LS and ALS_2 have RCC_2. A2LS and ALS_3 have RCC_3.
+					|RCC_1|>=2, |RCC_2|>=2, |RCC_3|>=2.</li>
 				<li>There is no overlap between RCC-a, RCC-b and RCC-c.</li>
 				<li>|A3LS digits| - 3 = |A3LS cells|</li>
 			</ol>

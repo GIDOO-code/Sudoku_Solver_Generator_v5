@@ -4,9 +4,9 @@
 # Code distribution restart. The GNPXv5 project has been compressed.
 
 
-# GNPX v5 HP:
-  en : https://gidoo-code.github.io/Sudoku_Solver_Generator_v5/<br>
-  jp : https://gidoo-code.github.io/Sudoku_Solver_Generator_v5_jp/<br>
+# GNPX v6 HP:
+  en : https://gidoo-code.github.io/Sudoku_Solver_Generator_v6/<br>
+  jp : https://gidoo-code.github.io/Sudoku_Solver_Generator_v6_jp/<br>
 <br><br>
 
 # Sudoku_Solver_Generator
